@@ -9,7 +9,7 @@ import br.com.brq.apicurso.model.Aluno;
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
 	//Tem todos os métodos para fazermos um CRUD
-	
+		
 }
 
 

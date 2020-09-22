@@ -41,27 +41,23 @@ public class AlunoController {
 	
 	@GetMapping ( value="alunos/{id}")
 	public Aluno getOne( @PathVariable int id ) {
-		return this.alunos.get(id);
+		return this.alunoService.getOne(id);
 	}
 	
 	@PostMapping ( value="alunos")
 	public Aluno create(@RequestBody Aluno aluno) {
 		
-		this.alunos.add(aluno);
-		
-		return aluno;
+		return this.alunoService.save(aluno);			
 	}
 	
 	@PatchMapping (value = "alunos/{id}")
 	public Aluno update(@RequestBody Aluno aluno, @PathVariable int id) {
 		
-		this.alunos.set(id, aluno);
-		
-		return aluno;
+		return this.alunoService.update(id, aluno);				
 	}
 	
 	@DeleteMapping (value = "alunos/{id}")
 	public void delete(@PathVariable int id) {
-		this.alunos.remove(id);
+		this.alunoService.delete(id);
 	}
 }

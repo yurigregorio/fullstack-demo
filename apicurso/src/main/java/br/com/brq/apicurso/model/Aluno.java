@@ -1,9 +1,14 @@
 package br.com.brq.apicurso.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Aluno {
 
+	@Id	
 	private int id;
+	
 	private String nome;
 	private String ra;
 	

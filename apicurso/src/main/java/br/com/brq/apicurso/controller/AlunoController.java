@@ -26,8 +26,6 @@ public class AlunoController {
 	private AlunoService alunoService ;
 	//private AlunoService alunoService = new AlunoService();
 	
-	private ArrayList<Aluno> alunos = new ArrayList<>();
-
 	//pegar todos os alunos
 	//Pegar um aluno
 	//Criar um aluno
@@ -59,5 +57,10 @@ public class AlunoController {
 	@DeleteMapping (value = "alunos/{id}")
 	public void delete(@PathVariable int id) {
 		this.alunoService.delete(id);
+	}
+	
+	@GetMapping ( value = "alunos/search/{nome}")
+	public List<Aluno> findByName(@PathVariable String nome){
+		return this.alunoService.findByNome(nome);
 	}
 }

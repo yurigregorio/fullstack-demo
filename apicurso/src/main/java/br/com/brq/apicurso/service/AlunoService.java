@@ -46,4 +46,8 @@ public class AlunoService {
 		}
 		return update;
 	}
+	
+	public List<Aluno> findByNome(String nome){
+		return this.alunoRepository.findByNomeContains(nome);
+	}
 }

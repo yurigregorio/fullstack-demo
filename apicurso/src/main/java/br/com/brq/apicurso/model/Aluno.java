@@ -3,9 +3,16 @@ package br.com.brq.apicurso.model;
 
 public class Aluno {
 
+	private int id;
 	private String nome;
 	private String ra;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -18,10 +25,9 @@ public class Aluno {
 	public void setRa(String ra) {
 		this.ra = ra;
 	}
-	
 	@Override
 	public String toString() {
-		return "Aluno [nome=" + nome + ", ra=" + ra + "]";
+		return "Aluno [id=" + id + ", nome=" + nome + ", ra=" + ra + "]";
 	}
-			
+		
 }

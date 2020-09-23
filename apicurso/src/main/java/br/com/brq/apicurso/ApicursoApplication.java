@@ -66,6 +66,11 @@ public class ApicursoApplication implements CommandLineRunner {
 				.preco(2500)
 				.build();
 			
+		
+		Imagem img2 = Imagem.builder().url("Testedeimagemdois.com").build();
+		img2.setProdutos(Arrays.asList(prod1));
+		prod1.setImagens(Arrays.asList(img2));
+		this.imagemRepository.save(img2);
 		this.produtoRepository.save(prod1);
 
 		
@@ -83,6 +88,11 @@ public class ApicursoApplication implements CommandLineRunner {
 //		arr.add(prod2);
 		
 		Imagem img = Imagem.builder().url("http://localhost:8080").build();
+
+	
+		
+	
+		
 		
 		//associando os objetos
 		img.setProdutos( Arrays.asList(prod2)  );		

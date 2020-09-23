@@ -1,9 +1,12 @@
 package br.com.brq.apicurso.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
@@ -16,15 +19,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Usuario {
-	
+public class Categoria {
+
 	@Id
-	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "usuario_seq_id" )
-	@SequenceGenerator ( sequenceName = "usuario_seq_id", name = "usuario_seq_id", allocationSize = 1 )
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "categoria_id_seq")
+	@SequenceGenerator( name = "categoria_id_seq", sequenceName = "categoria_id_seq",allocationSize = 1)
 	private int id;
-		
-	private String nome;	
-	private String senha;
-	private String email;
 	
+	private String nome;
+	private String descricao;
+	
+	@OneToMany(mappedBy = "categoria_id")
+	private List<Produto> produtos;
 }

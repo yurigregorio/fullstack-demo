@@ -91,6 +91,7 @@ public class ApicursoApplication implements CommandLineRunner {
 		this.imagemRepository.save(img);
 		this.produtoRepository.save(prod2);
 				
+		//System.out.println(this.imagemRepository.findAll());
 	}
 
 }

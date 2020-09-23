@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,14 +37,14 @@ public class Produto {
 	private String descricao;
 	private float preco;
 	
-	@ManyToOne
-	@JoinColumn (name = "categoria_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn (name = "categoria_id")	
 	private Categoria categoria;
 	
 	@ManyToMany
 	@JoinTable( name = "produto_imagem",
 		joinColumns = @JoinColumn(name="produto_id"),
 		inverseJoinColumns = @JoinColumn(name="imagem_id")
-	)
+	)		
 	private List<Imagem> imagens;
 }

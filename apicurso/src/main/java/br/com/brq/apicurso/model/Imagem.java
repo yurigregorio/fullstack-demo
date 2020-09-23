@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,7 @@ public class Imagem {
 	private String url;
 	
 	@ManyToMany( mappedBy = "imagens")
+	@JsonIgnore
 	private List<Produto> produtos; 
 	
 }

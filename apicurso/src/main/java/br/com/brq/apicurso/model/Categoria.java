@@ -2,12 +2,16 @@ package br.com.brq.apicurso.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +33,7 @@ public class Categoria {
 	private String nome;
 	private String descricao;
 	
-	@OneToMany(mappedBy = "categoria_id")
+	@OneToMany(mappedBy = "categoria")		
 	private List<Produto> produtos;
+	
 }

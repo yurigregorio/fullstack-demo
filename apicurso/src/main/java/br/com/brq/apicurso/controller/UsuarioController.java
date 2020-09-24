@@ -45,4 +45,6 @@ public class UsuarioController {
 	public void delete(@PathVariable int id){
 		this.usuarioService.delete(id);
 	}
+	
+	
 }

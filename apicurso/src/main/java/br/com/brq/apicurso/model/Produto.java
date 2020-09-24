@@ -38,13 +38,13 @@ public class Produto {
 	private float preco;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn (name = "categoria_id")	
+	@JoinColumn (name = "categoria_id")	//cria uma coluna "categoria_id" que guarda a categoria.
 	private Categoria categoria;
 	
 	@ManyToMany
 	@JoinTable( name = "produto_imagem",
-		joinColumns = @JoinColumn(name="produto_id"),
-		inverseJoinColumns = @JoinColumn(name="imagem_id")
-	)		
+				joinColumns = @JoinColumn(name="produto_id"),
+				inverseJoinColumns = @JoinColumn(name="imagem_id")
+	)			
 	private List<Imagem> imagens;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import br.com.brq.apicurso.model.Aluno;
@@ -49,5 +50,9 @@ public class AlunoService {
 	
 	public List<Aluno> findByNome(String nome){
 		return this.alunoRepository.findByNomeContains(nome);
+	}
+	
+	public List<Aluno> procurarPorNome(String nome){
+		return this.alunoRepository.procurarPorNome(nome);
 	}
 }

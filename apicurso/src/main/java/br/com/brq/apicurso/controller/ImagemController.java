@@ -2,7 +2,6 @@ package br.com.brq.apicurso.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,48 +14,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.brq.apicurso.model.Produto;
-import br.com.brq.apicurso.service.ProdutoService;
+import br.com.brq.apicurso.model.Imagem;
+
+import br.com.brq.apicurso.service.ImagemService;
+
 
 @RestController
-@RequestMapping (value="produtos") //fica o começo do url
-public class ProdutoController {
+@RequestMapping (value="imagens")
+public class ImagemController {
 	
 	@Autowired
-	private ProdutoService produtoService;
-
+	private ImagemService imagemService;
+	
 	@GetMapping 
-	public List<Produto> getAll() {
-		return this.produtoService.findAll();
+	public List<Imagem> getAll() {
+		return this.imagemService.findAll();
 	}
 	
 	@GetMapping (value = "{id}")
-	public Produto getOne(@PathVariable int id) {
-		return this.produtoService.getOne(id);
+	public Imagem getOne(@PathVariable int id) {
+		return this.imagemService.getOne(id);
 	}
 	
 	
 	@PostMapping 
-	public Produto save(@RequestBody Produto produto){
-		return this.produtoService.save(produto);
+	public Imagem save(@RequestBody Imagem imagem){
+		return this.imagemService.save(imagem);
 	}
 	
 	@PatchMapping (value = "{id}")
-	public Produto update(@RequestBody Produto produto, @PathVariable int id){
-		return this.produtoService.update(id, produto);
+	public Imagem update(@RequestBody Imagem imagem, @PathVariable int id){
+		return this.imagemService.update(id, imagem);
 	}
 	
 	@DeleteMapping (value = "{id}")
 	public void delete(@PathVariable int id){
-		this.produtoService.delete(id);
+		this.imagemService.delete(id);
 	}
 	
 	@GetMapping (value = "paginador")
-	public Page<Produto> paginacao(
+	public Page<Imagem> paginacao(
 			@RequestParam (value="pagina", defaultValue ="0") int pagina,
 			@RequestParam (value="linhas", defaultValue ="5") int linhas
 			) {
-		return this.produtoService.paginacao(pagina, linhas);
+		return this.imagemService.paginacao(pagina, linhas);
 		
 	}
+	
+
 }

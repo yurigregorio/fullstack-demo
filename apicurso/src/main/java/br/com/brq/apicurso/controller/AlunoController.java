@@ -61,6 +61,9 @@ public class AlunoController {
 	
 	@GetMapping ( value = "alunos/search/{nome}")
 	public List<Aluno> findByName(@PathVariable String nome){
-		return this.alunoService.findByNome(nome);
+		//return this.alunoService.findByNome(nome);
+		return this.alunoService.procurarPorNome(nome);
 	}
+	
+	
 }

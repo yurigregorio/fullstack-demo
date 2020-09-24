@@ -1,10 +1,10 @@
 package br.com.brq.apicurso.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -20,19 +20,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Usuario {
+public class Endereco {
+	
 	
 	@Id
-	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "usuario_seq_id" )
-	@SequenceGenerator ( sequenceName = "usuario_seq_id", name = "usuario_seq_id", allocationSize = 1 )
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "endereco_id_seq")
+	@SequenceGenerator( name = "endereco_id_seq", sequenceName = "endereco_id_seq",allocationSize = 1)
 	private int id;
-		
-	private String nome;	
-	private String senha;
-	private String email;
 	
-	@OneToOne
-	@JoinColumn (name = "endereco_id")
+	private String logradouro;
+	private String numero;
+	private String bairro;
+	private String cep;
+	private String estado;
+	private String cidade;
 	
-	private Endereco endereco;
+	@OneToOne(mappedBy = "endereco")
+	@JsonIgnore
+	private Usuario usuario;
+	
 }

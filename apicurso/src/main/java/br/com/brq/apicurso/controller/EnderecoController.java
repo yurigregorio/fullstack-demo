@@ -2,7 +2,6 @@ package br.com.brq.apicurso.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,48 +14,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.brq.apicurso.model.Produto;
-import br.com.brq.apicurso.service.ProdutoService;
+import br.com.brq.apicurso.model.Endereco;
+import br.com.brq.apicurso.model.Imagem;
+import br.com.brq.apicurso.service.EnderecoService;
 
 @RestController
-@RequestMapping (value="produtos") //fica o começo do url
-public class ProdutoController {
+@RequestMapping (value = "enderecos")
+public class EnderecoController {
 	
 	@Autowired
-	private ProdutoService produtoService;
-
+	private EnderecoService enderecoService;
+	
 	@GetMapping 
-	public List<Produto> getAll() {
-		return this.produtoService.findAll();
+	public List<Endereco> getAll() {
+		return this.enderecoService.findAll();
 	}
 	
 	@GetMapping (value = "{id}")
-	public Produto getOne(@PathVariable int id) {
-		return this.produtoService.getOne(id);
+	public Endereco getOne(@PathVariable int id) {
+		return this.enderecoService.getOne(id);
 	}
 	
 	
 	@PostMapping 
-	public Produto save(@RequestBody Produto produto){
-		return this.produtoService.save(produto);
+	public Endereco save(@RequestBody Endereco endereco){
+		return this.enderecoService.save(endereco);
 	}
 	
 	@PatchMapping (value = "{id}")
-	public Produto update(@RequestBody Produto produto, @PathVariable int id){
-		return this.produtoService.update(id, produto);
+	public Endereco update(@RequestBody Endereco endereco, @PathVariable int id){
+		return this.enderecoService.update(id, endereco);
 	}
 	
 	@DeleteMapping (value = "{id}")
 	public void delete(@PathVariable int id){
-		this.produtoService.delete(id);
+		this.enderecoService.delete(id);
 	}
 	
 	@GetMapping (value = "paginador")
-	public Page<Produto> paginacao(
+	public Page<Endereco> paginacao(
 			@RequestParam (value="pagina", defaultValue ="0") int pagina,
 			@RequestParam (value="linhas", defaultValue ="5") int linhas
 			) {
-		return this.produtoService.paginacao(pagina, linhas);
+		return this.enderecoService.paginacao(pagina, linhas);
 		
 	}
+
 }

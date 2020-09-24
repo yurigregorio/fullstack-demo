@@ -10,10 +10,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.brq.apicurso.model.Categoria;
+import br.com.brq.apicurso.model.Endereco;
 import br.com.brq.apicurso.model.Imagem;
 import br.com.brq.apicurso.model.Produto;
 import br.com.brq.apicurso.model.Usuario;
 import br.com.brq.apicurso.repository.CategoriaRepository;
+import br.com.brq.apicurso.repository.EnderecoRepository;
 import br.com.brq.apicurso.repository.ImagemRepository;
 import br.com.brq.apicurso.repository.ProdutoRepository;
 import br.com.brq.apicurso.repository.UsuarioRepository;
@@ -32,6 +34,9 @@ public class ApicursoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ImagemRepository imagemRepository;
+	
+	@Autowired
+	private EnderecoRepository	enderecoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApicursoApplication.class, args);
@@ -89,11 +94,6 @@ public class ApicursoApplication implements CommandLineRunner {
 		
 		Imagem img = Imagem.builder().url("http://localhost:8080").build();
 
-	
-		
-	
-		
-		
 		//associando os objetos
 		img.setProdutos( Arrays.asList(prod2)  );		
 		prod2.setImagens( Arrays.asList(img) );
@@ -102,6 +102,28 @@ public class ApicursoApplication implements CommandLineRunner {
 		this.produtoRepository.save(prod2);
 				
 		//System.out.println(this.imagemRepository.findAll());
+		
+		
+		Endereco end1 = Endereco
+						.builder()
+						.bairro("Vila Boa")
+						.cep("06253-459")
+						.cidade("Esperanca")
+						.estado("SP")
+						.logradouro("Avenida Africa")
+						.numero("1")
+						.build();
+		
+		Usuario u = Usuario.builder()
+					.nome("Usuário 1")
+					.email("usuarioONE@usuario.com")
+					.senha("123456")
+					.endereco(end1)
+					.build();		
+		
+		this.enderecoRepository.save(end1);
+		u = this.usuarioRepository.save(u);
+
 	}
 
 }

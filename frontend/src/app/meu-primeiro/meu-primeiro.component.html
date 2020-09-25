@@ -1,0 +1,26 @@
+
+<p>meu-primeiro works!</p>
+
+{{ titulo }}
+<br>
+{{ curso }}
+<br>
+{{ getNome() }}
+<br>
+<input value="{{titulo}}" />
+<br>
+
+
+<input #tituloInput [value]= "titulo" (keyup)="onInput(tituloInput.value)" />
+<br>
+
+<input [(ngModel)]= "titulo"/>
+<br>
+
+<button [class]="getClass()"
+        [class.btn] = "isDisabled()"
+        [disabled] = "isDisabled()" 
+        [style.backgroundColor] = "getBackgroundColor()"
+        (click) = "onButtonClick()"
+        > Meu botão 
+</button>

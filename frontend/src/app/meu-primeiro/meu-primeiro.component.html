@@ -20,7 +20,8 @@
 <button [class]="getClass()"
         [class.btn] = "isDisabled()"
         [disabled] = "isDisabled()" 
-        [style.backgroundColor] = "getBackgroundColor()"
+        [style.backgroundColor] = "getClass()"
         (click) = "onButtonClick()"
         > Meu botão 
 </button>
+

@@ -14,7 +14,7 @@ import br.com.brq.apicurso.repository.EnderecoRepository;
 @Service
 public class EnderecoService {
 
-	@Autowired
+	@Autowired // serve para injet
 	private EnderecoRepository enderecoRepository;
 	
 	public List<Endereco> findAll(){

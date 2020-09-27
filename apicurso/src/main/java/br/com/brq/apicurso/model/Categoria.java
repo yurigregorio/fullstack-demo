@@ -18,11 +18,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Entity //Será uma tabela
+@Data //Gerará todos os getters and setters
+@AllArgsConstructor //Construtor com todos os parametros
+@NoArgsConstructor //Construtor sem argumentos
+@Builder 
 public class Categoria {
 
 	@Id

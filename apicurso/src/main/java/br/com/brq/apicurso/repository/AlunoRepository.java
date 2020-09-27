@@ -25,8 +25,9 @@ public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 	public List<Aluno> findByNomeStartingWithAndRaContains(String nome, String ra);
 	
 	@Query(value = "SELECT * FROM Aluno WHETE nome =", nativeQuery = true)
-//	@Query("SELECT a FROM Aluno a WHERE a.nome like %:nome%")
+//	@Query("SELECT a FROM Aluno a WHERE a.nome like %:nome%" tesrte)
 	public List<Aluno> procurarPorNome(String nome);
 }
+
 
 

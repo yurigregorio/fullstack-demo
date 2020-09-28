@@ -2,24 +2,22 @@
 
 <button (click) = "meuEvento()"
 > Consultar alunos </button>
-
-
 <br />
 <br />
 
-<table class="table">
+<table class="table" *ngIf = "alunosApi != null">
     <tr>
-        <th>id</th>
-        <th>email</th>
-        <th>first name</th>
-        <th>last name</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>RA</th>
+        <th>Curso</th>
     </tr>
 
-    <tr *ngFor="let alun of alunos.data"> 
+    <tr *ngFor="let alun of alunosApi"> 
         <td>{{ alun.id }}</td>
-        <td>{{ alun.email }}</td>
-        <td>{{ alun.first_name }}</td>
-        <td>{{ alun.last_name }}</td>
+        <td>{{ alun.nome }}</td>
+        <td>{{ alun.ra }}</td>
+        <td>{{ alun.curso }}</td>
     </tr>
  
 </table>

@@ -13,7 +13,8 @@ export class AlunoService {
     alert('Minha mensagem');
   }
 
-  getAllAlunos(){
-    return this.httpClient.get('https://reqres.in/api/users');
+  getAllAlunosApi(){
+    return this.httpClient.get('http://localhost:8081/alunos');
   }
+
 }

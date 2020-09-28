@@ -8,23 +8,24 @@ import { AlunoService } from '../aluno.service';
 })
 export class AlunoListComponent implements OnInit {
 
-  public alunos : any;
+  public alunosApi : any;
+  
 
 //Os serviços usam injeção de dependência
   constructor(private alunoService : AlunoService) { }
 
   ngOnInit(): void {
-    this.meuEvento();
+    //this.meuEvento();
     //quando a aplicação inicia, ela passa por aqui
   }
 
   meuEvento(){
     //this.alunoService.mostrarMensagem();
-    this.alunoService.getAllAlunos()
+    this.alunoService.getAllAlunosApi()
     .subscribe( (resultado) =>
       {
       console.log(resultado);
-      this.alunos = resultado;
+      this.alunosApi = resultado;
       }
     );
   } 

@@ -1,1 +1,25 @@
 <p>aluno-list works!</p>
+
+<button (click) = "meuEvento()"
+> Consultar alunos </button>
+
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>email</th>
+        <th>first name</th>
+        <th>last name</th>
+    </tr>
+
+    <tr *ngFor="let alun of alunos.data"> 
+        <td>{{ alun.id }}</td>
+        <td>{{ alun.email }}</td>
+        <td>{{ alun.first_name }}</td>
+        <td>{{ alun.last_name }}</td>
+    </tr>
+ 
+</table>

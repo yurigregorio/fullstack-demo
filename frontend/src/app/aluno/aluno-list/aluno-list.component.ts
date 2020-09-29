@@ -26,6 +26,10 @@ export class AlunoListComponent implements OnInit {
       {
       console.log(resultado);
       this.alunosApi = resultado;
+      },
+      //usando há erro
+      (error) => {
+        console.log (error);
       }
     );
   } 

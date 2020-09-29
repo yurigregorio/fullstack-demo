@@ -7,6 +7,7 @@ import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 import { FormsModule } from '@angular/forms';
 import { AlunoModule } from './aluno/aluno.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FormsRoutingModule } from './forms/forms-routing.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AlunoModule
+    AlunoModule,
+    FormsRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

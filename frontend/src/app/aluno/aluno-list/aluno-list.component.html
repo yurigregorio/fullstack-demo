@@ -21,3 +21,15 @@
     </tr>
  
 </table>
+
+<div class="card" style="width: 18rem;" *ngIf="aluno?.id>0">
+    <div class="card-body">
+        <h5 class="card-title">Aluno {{ aluno?.id }} </h5>
+
+        <p class="card-text"> Nome : {{ aluno?.nome }} </p>
+        <p class="card-text"> RA : {{ aluno?.ra }} </p>
+    </div>
+</div>
+
+
+

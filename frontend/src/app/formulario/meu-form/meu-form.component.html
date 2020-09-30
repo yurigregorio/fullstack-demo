@@ -13,21 +13,19 @@
       <label for="exampleInputPassword1">Nome</label>
       <input type="text" class="form-control" formControlName = "nome" placeholder="Nome">
     </div>
-
-    <div class="alert alert-danger" role="alert" 
-    *ngIf="meuForm.controls.nome.valid == false && meuForm.controls.nome.touched == true ">
-    This is a danger alert—check it out!
-  </div>
+     <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
 
     <div class="form-group">
         <label for="exampleInputPassword1">RA</label>
         <input type="text" class="form-control" formControlName = "ra" placeholder="RA">
       </div>
+      <app-mostrar-erros [isError]= "isErrorField('ra')" [mensagem] = "'RA obrigatório!'" > </app-mostrar-erros>
 
       <div class="form-group">
         <label for="exampleInputPassword1">Curso</label>
         <input type="text" class="form-control" formControlName = "curso" placeholder="Curso">
       </div>
+      <app-mostrar-erros [isError]= "isErrorField('curso')" [mensagem] = "'Curso obrigatório!'" > </app-mostrar-erros>
     
       
 

@@ -9,7 +9,7 @@ export class FormularioService {
   constructor(private httpClient : HttpClient) { }
   
   
-postAluno(alunoNovo : {}){
+postAluno(alunoNovo : any){
   return this.httpClient.post('http://localhost:8081/alunos/', alunoNovo)
 }
 

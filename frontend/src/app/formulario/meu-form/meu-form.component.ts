@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormularioService } from '../formulario.service';
@@ -11,7 +12,9 @@ export class MeuFormComponent implements OnInit {
   public novoAluno : any;
   public meuForm : FormGroup;
 
-  constructor(private formularioService :FormularioService, private formBuilder : FormBuilder) {
+  constructor(private formularioService : FormularioService, 
+              private formBuilder       : FormBuilder             ) {
+
     this.meuForm = this.formBuilder.group({
       //valor inicial e os validadores..
       id : ['', [] ],
@@ -26,15 +29,23 @@ export class MeuFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.formularioService.postAluno(this.meuForm.value).subscribe(
-      (resultado) => {
-        console.log("cadastrado");
-      }, 
-      (error) => {
-        console.log(error.status);
+    this.postAluno(this.meuForm.value);
 
+  }
+
+  public isErrorField(fieldName){
+    return (this.meuForm.get(fieldName).valid==false && this.meuForm.get(fieldName).touched==true);
+  }
+
+
+  private postAluno (aluno : any){
+    this.formularioService.postAluno(aluno)
+    .subscribe(
+      (dados) =>{
+        console.log(dados);
+        alert ( JSON.stringify(dados));
       }
-    )
+    );
   }
 
 }

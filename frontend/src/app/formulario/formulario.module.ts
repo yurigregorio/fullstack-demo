@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsRoutingModule } from './forms-routing.module';
+import { FormularioRoutingModule } from './formulario-routing.module';
 import { MeuFormComponent } from './meu-form/meu-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [MeuFormComponent],
   imports: [
     CommonModule,
-    FormsRoutingModule
+    FormularioRoutingModule,
+    //FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class FormsModule { }
+export class FormularioModule { }

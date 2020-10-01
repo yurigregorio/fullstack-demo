@@ -1,5 +1,5 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormularioService } from '../formulario.service';
 
@@ -9,8 +9,10 @@ import { FormularioService } from '../formulario.service';
   styleUrls: ['./meu-form.component.scss']
 })
 export class MeuFormComponent implements OnInit {
-  public novoAluno : any;
+  public novoAluno : number = 0;
   public meuForm : FormGroup;
+  @Output() public contador: number = 0;
+
 
   constructor(private formularioService : FormularioService, 
               private formBuilder       : FormBuilder             ) {
@@ -35,6 +37,11 @@ export class MeuFormComponent implements OnInit {
 
   public isErrorField(fieldName){
     return (this.meuForm.get(fieldName).valid==false && this.meuForm.get(fieldName).touched==true);
+  }
+
+  public receberNotificacao(event){
+    console.log(event);
+    this.contador++;
   }
 
 

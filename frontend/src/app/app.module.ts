@@ -9,6 +9,8 @@ import { AlunoModule } from './aluno/aluno.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FormularioRoutingModule } from './formulario/formulario-routing.module';
 import { FormularioModule } from './formulario/formulario.module';
+import { AlunoRoutingModule } from './aluno/aluno-routing.module';
+import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { FormularioModule } from './formulario/formulario.module';
     FormularioRoutingModule,
     ReactiveFormsModule,
     FormularioModule,
+    AlunoRoutingModule,
+    
     
   ],
   providers: [],

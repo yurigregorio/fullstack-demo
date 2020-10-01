@@ -1,9 +1,17 @@
-<p>aluno-list works!</p>
 
-<button (click) = "meuEvento()"
+
+<br>
+
+<button class = "btn btn-dark" [routerLink]="['/alunos/form']">
+    Cadastrar Aluno
+</button>
+<br>
+<br>
+
+<!-- <button (click) = "meuEvento()"
 > Consultar alunos </button>
 <br />
-<br />
+<br /> -->
 
 <table class="table" >
     <tr>
@@ -11,6 +19,7 @@
         <th>Nome</th>
         <th>RA</th>
         <th>Curso</th>
+        <th>Operações</th>
     </tr>
 
     <tr *ngFor="let alun of alunosApi"> 
@@ -18,11 +27,18 @@
         <td>{{ alun?.nome }}</td>
         <td>{{ alun?.ra }}</td>
         <td>{{ alun?.curso }}</td>
+        <td><button class="btn btn-dark" [routerLink]="['/alunos/form/]" >Editar </button> 
+             
+            <button class="btn btn-danger">Deletar</button> 
+        
+        
+        
+        </td>
     </tr>
  
 </table>
 
-
+<!-- 
 <div class="card" style="width: 18rem;" *ngIf="aluno?.id>0">
     <div class="card-body">
         <h5 class="card-title">Aluno {{ aluno?.id }} </h5>
@@ -30,7 +46,7 @@
         <p class="card-text"> Nome : {{ aluno?.nome }} </p>
         <p class="card-text"> RA : {{ aluno?.ra }} </p>
     </div>
-</div>
+</div> -->
 
 
 

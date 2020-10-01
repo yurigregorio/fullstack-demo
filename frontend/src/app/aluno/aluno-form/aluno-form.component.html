@@ -1,0 +1,28 @@
+
+
+<br>
+<form [formGroup] = "meuForm" (submit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="exampleInputPassword1">Nome</label>
+      <input type="text" class="form-control" formControlName = "nome" placeholder="Nome">
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">RA</label>
+        <input type="text" class="form-control" formControlName = "ra" placeholder="RA">
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('ra')" [mensagem] = "'RA obrigatório!'" > </app-mostrar-erros>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Curso</label>
+        <input type="text" class="form-control" formControlName = "curso" placeholder="Curso">
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('curso')" [mensagem] = "'Curso obrigatório!'" > </app-mostrar-erros>
+    
+    <button type="submit" [disabled]= "meuForm.valid == false" class="btn btn-primary">Submit</button>   
+</form>
+<br>
+
+

@@ -45,7 +45,7 @@ public class AlunoService {
 			
 			update.setNome(aluno.getNome());
 			update.setRa(aluno.getRa());
-			
+			update.setCurso(aluno.getCurso());
 			update = this.alunoRepository.save(update);			
 		}
 		return update;

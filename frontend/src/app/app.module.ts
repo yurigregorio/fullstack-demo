@@ -12,6 +12,8 @@ import { FormularioModule } from './formulario/formulario.module';
 import { AlunoRoutingModule } from './aluno/aluno-routing.module';
 import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoriaRoutingModule } from './categoria/categoria-routing.module';
+import { CategoriaModule } from './categoria/categoria.module';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormularioModule,
     AlunoRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CategoriaRoutingModule,
+    
 
 
   ],

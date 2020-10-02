@@ -1,0 +1,23 @@
+
+
+<br>
+<form [formGroup] = "meuForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Nome Categoria</label>
+      <input type="textarea" class="form-control" formControlName = "nome" placeholder="Nome">
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Descrição</label>
+        <textarea type="text" class="form-control" formControlName = "descricao" placeholder="Descrição da categoria"></textarea>
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary mr-2" [disabled]="meuForm.valid == false" > {{ textoBotao }}</button>
+      <button type="button" class="btn btn-secondary"  [routerLink]="['/categorias']" > Voltar </button>
+    </div>
+</form>
+<br>

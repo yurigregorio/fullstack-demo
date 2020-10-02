@@ -18,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     AlunoRoutingModule,
     SharedModule,
+    
   ],
   exports : [AlunoListComponent]
 })

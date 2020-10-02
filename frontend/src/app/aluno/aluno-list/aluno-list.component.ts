@@ -49,35 +49,31 @@ export class AlunoListComponent implements OnInit {
     );
   }
 
+  public getallAlunos(){
+    this.alunoService.getAllAlunosApi()
+    .subscribe(
+      ( resultado ) => {
+        console.log ( resultado );
+        this.alunosApi = resultado;
+      }
+    );
+  }
+
+
   ngOnInit(): void {
     //quando a aplicação inicia, ela passa por aqui
-    //this.meuEvento();
+    this.getallAlunos();
+  }
 
-    this.alunoService.getAllAlunosApi()
+  deletarAluno(id){
+    this.alunoService.deletarAluno(id)
       .subscribe(
-        ( resultado ) => {
-          console.log ( resultado );
-          this.alunosApi = resultado;
+        (dados) =>{
+            alert("aluno deletado com sucesso");
+            this.getallAlunos();
         }
       );
   }
-
-  // meuEvento(){
-  //   //this.alunoService.mostrarMensagem();
-  //   this.alunoService.getAllAlunos()
-  //     .subscribe(
-  //       (resultado) => {
-  //         console.log (resultado);
-  //         this.alunos = resultado;
-  //       },
-  //       //uando há erro
-  //       (error) => {
-  //         console.log (error);
-  //         alert(error.status);
-  //       }
-  //     );
-
-  // }
 
 }
 

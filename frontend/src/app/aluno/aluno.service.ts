@@ -8,7 +8,7 @@ import { AlunoListComponent } from './aluno-list/aluno-list.component';
 })
 export class AlunoService {
   public alunoIdService;
-  
+
   urlApi = `${environment.urlApi}/alunos`;
 
   // Http Cliente = um serviço. Pertence ao módulo HttpClienteModule
@@ -31,7 +31,10 @@ export class AlunoService {
   }
 
   updateAluno(id, aluno){
-    return this.httpClient.patch ( `${this.urlApi }/${id}` , aluno );
+    return this.httpClient.patch( `${this.urlApi }/${id}` , aluno );
   }
 
+  public deletarAluno(id :any){
+    return this.httpClient.delete(`${this.urlApi }/${id}`)
+  }
 }

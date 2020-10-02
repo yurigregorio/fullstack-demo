@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AlunoService } from '../aluno.service';
 
 @Component({
@@ -13,11 +14,16 @@ export class AlunoFormComponent implements OnInit {
   public meuForm : FormGroup;
   isEdicao : boolean = false;
   idAluno : number = 0;
+  textoBotao :string = 'Salvar';
 
   constructor(
-    private alunoService : AlunoService, 
+    private alunoService : AlunoService,
     private formBuilder       : FormBuilder,
-    private actvatedRoute     : ActivatedRoute) {
+    private actvatedRoute     : ActivatedRoute,
+    private router            : Router,
+    private toastr            : ToastrService)
+
+    {
       this.meuForm = this.formBuilder.group({
       //valor inicial e os validadores..
       nome : ['', [ Validators.required, Validators.maxLength(25)] ],
@@ -35,6 +41,7 @@ export class AlunoFormComponent implements OnInit {
             this.isEdicao = true;
             this.idAluno = parametros.id;
             this.getOneAluno(parametros.id);
+            this.textoBotao = 'Editar'
           }
         }
       );
@@ -47,7 +54,7 @@ export class AlunoFormComponent implements OnInit {
       else{
         this.createAluno(this.meuForm.value);
       }
-     
+
 
     }
 
@@ -56,7 +63,10 @@ export class AlunoFormComponent implements OnInit {
       .subscribe(
         (dados) =>{
           console.log(dados);
-          alert ( JSON.stringify(dados));
+          this.toastr.success("Aluno criado com sucesso!")
+          this.router.navigate(['/alunos']);
+          //alert ( JSON.stringify(dados));
+
         }
       );
     }
@@ -80,6 +90,8 @@ export class AlunoFormComponent implements OnInit {
       .subscribe(
         (dados)=>{
           console.log(dados);
+          this.toastr.success("Aluno alterado com sucesso!")
+          this.router.navigate(['/alunos']);
           alert (JSON.stringify(dados));
         }
       );

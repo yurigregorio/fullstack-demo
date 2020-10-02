@@ -2,7 +2,7 @@
 
 <br>
 <form [formGroup] = "meuForm" (submit)="onSubmit()">
-    
+
     <div class="form-group">
       <label for="exampleInputPassword1">Nome</label>
       <input type="text" class="form-control" formControlName = "nome" placeholder="Nome">
@@ -20,8 +20,11 @@
         <input type="text" class="form-control" formControlName = "curso" placeholder="Curso">
     </div>
     <app-mostrar-erros [isError]= "isErrorField('curso')" [mensagem] = "'Curso obrigatório!'" > </app-mostrar-erros>
-    
-    <button type="submit" [disabled]= "meuForm.valid == false" class="btn btn-primary">Submit</button>   
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary mr-2" [disabled]="meuForm.valid == false" > {{ textoBotao }}</button>
+      <button type="button" class="btn btn-secondary"  [routerLink]="['/alunos']" > Voltar </button>
+    </div>
 </form>
 <br>
 

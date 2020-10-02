@@ -6,6 +6,7 @@ import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlunoRoutingModule } from './aluno-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -18,7 +19,9 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     AlunoRoutingModule,
     SharedModule,
-    
+    ToastrModule.forRoot()
+
+
   ],
   exports : [AlunoListComponent]
 })

@@ -1,13 +1,10 @@
 
 
-<br>
-
-<button class = "btn btn-dark" [routerLink]="['/alunos/form']">
+<div class="float-right mb-4 mt-4">
+<a class = "btn btn-dark mb-4" [routerLink]="['/alunos/form']">
     Cadastrar Aluno
-</button>
-<br>
-<br>
-
+</a>
+</div>
 <!-- <button (click) = "meuEvento()"
 > Consultar alunos </button>
 <br />
@@ -27,8 +24,8 @@
         <td>{{ alun?.nome }}</td>
         <td>{{ alun?.ra }}</td>
         <td>{{ alun?.curso }}</td>
-        <td><button class="btn btn-dark mr-2" [routerLink]= "['/alunos/form', alun?.id]" routerLinkActive="route" >Editar </button>
-            <button class="btn btn-danger" (click)="deletarAluno(alun?.id)">Deletar</button>
+        <td><button class="btn btn-dark mr-2" [routerLink]= "['/alunos/form', alun?.id]" routerLinkActive="route" >Editar </button>
+          <button class="btn btn-danger" (click)="deletarAluno(alun?.id)">Deletar</button>
 
 
 

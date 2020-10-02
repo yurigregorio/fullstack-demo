@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
 import { AlunoService } from '../aluno.service';
 
 @Component({
@@ -16,37 +14,7 @@ export class AlunoListComponent implements OnInit {
   public aluno : any;
   //Os Servços usam injeção de dependência
   //private alunoService : AlunoService = new AlunoService();
-  constructor(private alunoService : AlunoService, private activatedRoute : ActivatedRoute ) {
-    console.log(this.activatedRoute);
-
-    this.activatedRoute.params.subscribe(
-      (parametros) => {
-
-        if (parametros.id){
-          this.alunoId = parametros.id;
-
-          this.alunoService.getOneAluno(this.alunoId)
-            .subscribe(
-              (dados : any)=>{
-                this.aluno = dados;
-                this.alunosApi.push(this.aluno);
-                if (dados.nome){
-                  alert( 'nome ' + dados.nome + ' ra ' + dados.ra );
-                }
-                else{
-                  alert( 'aluno não encontrado' );
-                }
-
-              },
-              (error) => {
-                alert ('erro ao consultar o aluno');
-              }
-             );
-
-        }
-
-      }
-    );
+  constructor(private alunoService : AlunoService) {
   }
 
   public getallAlunos(){

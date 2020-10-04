@@ -43,7 +43,7 @@ public class CategoriaController {
 		return this.categoriaService.update(id, categoria);
 	}
 	
-	//deletando um categoria, pelo id
+	//deletando um categoria,
 	@DeleteMapping(value="categorias/{id}")
 	public void delete(@PathVariable int id) {
 		this.categoriaService.delete(id);

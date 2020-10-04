@@ -13,7 +13,7 @@
   <tr *ngFor="let cat of categoriaApi">
       <td>{{ cat?.nome }}</td>
       <td>{{ cat?.descricao }}</td>
-      <td><button class="btn btn-dark mr-2" [routerLink]= "['/categorias/form', cat?.id]" routerLinkActive="route" >Editar </button>
+      <td><button class="btn btn-dark mr-2" [routerLink]= "['/categorias/form', cat?.id]" routerLinkActive="route" >Editar</button>
         <button class="btn btn-danger" (click)="deletarCategoria(cat.id)">Deletar</button>
 
 

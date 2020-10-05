@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
-import { Categoria } from '../model/categoria';
 
 @Component({
   selector: 'app-categoria',
@@ -11,7 +10,7 @@ export class CategoriaComponent implements OnInit {
 
   public categoriaApi : any = [];
 
-  public categorias : Categoria[] = [];
+
   constructor(private categoriaService : CategoriaService) { }
 
   ngOnInit(): void {

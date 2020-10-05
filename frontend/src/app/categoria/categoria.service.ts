@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Categoria } from './model/categoria';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +11,20 @@ urlApi = `${environment.urlApi}/categorias`;
 
 
 
-getAllCategorias() : Observable<Categoria[]>{
-  return this.httpClient.get<Categoria[]>(this.urlApi);
+getAllCategorias(){
+  return this.httpClient.get(this.urlApi);
 };
 
 getOneCategorias(idCategoria : number){
-  return this.httpClient.get<Categoria[]>(`${this.urlApi}/${idCategoria}`);
+  return this.httpClient.get(`${this.urlApi}/${idCategoria}`);
 }
 
 createCategoria(newCategoria : any){
-  return this.httpClient.post<Categoria[]>(this.urlApi , newCategoria);
+  return this.httpClient.post(this.urlApi , newCategoria);
 }
 
 updateCategoria(id, categoria){
-  return this.httpClient.patch<Categoria[]>( `${this.urlApi }/${id}` , categoria );
+  return this.httpClient.patch( `${this.urlApi }/${id}` , categoria );
 }
 
 public deletarCategoria(id :any){

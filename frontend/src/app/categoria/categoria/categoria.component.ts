@@ -31,7 +31,7 @@ export class CategoriaComponent implements OnInit {
     this.categoriaService.deletarCategoria(id)
     .subscribe(
       (dados) => {
-          alert("categoria deletada com sucesso!");
+          alert("Categoria deletada com sucesso!");
           this.getAllCategorias();
       }
     )

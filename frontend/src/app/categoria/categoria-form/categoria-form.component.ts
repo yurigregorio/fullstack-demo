@@ -72,7 +72,7 @@ export class CategoriaFormComponent implements OnInit {
     .subscribe(
       (dados) =>{
         console.log(dados);
-        this.toastr.success("Categoria criado com sucesso!")
+        this.toastr.success("Categoria criada com sucesso!")
         this.router.navigate(['/categorias']);
         //alert ( JSON.stringify(dados));
 

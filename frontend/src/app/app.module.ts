@@ -14,6 +14,7 @@ import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoriaRoutingModule } from './categoria/categoria-routing.module';
 import { CategoriaModule } from './categoria/categoria.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -33,9 +34,7 @@ import { CategoriaModule } from './categoria/categoria.module';
     AlunoRoutingModule,
     BrowserAnimationsModule,
     CategoriaRoutingModule,
-    
-
-
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,10 +31,7 @@ updateCategoria(id, categoria){
 public deletarCategoria(id :any){
   return this.httpClient.delete(`${this.url }/${id}`)
 }
-  // Copiar aqui no service
-  // Este método é responsável por fazer as requisições de paginação no formato (no formato)
-  // http://localhost:8081/categorias/pagination?pagina=0&linhas=1
-  //O service vai retornar os resultados da paginação
+ 
   public pagination(pagina: number, linhas: number){
     return this.httpClient.get(`${this.url}/pagination?pagina=${pagina}&linhas=${linhas}`);
   }

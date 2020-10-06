@@ -4,9 +4,9 @@ import { CategoriaFormComponent } from './categoria-form/categoria-form.componen
 import { CategoriaComponent } from './categoria/categoria.component';
 
 const routes: Routes = [
-  {path   : 'categorias', component : CategoriaComponent},
-  {path   : 'categorias/form', component : CategoriaFormComponent},
-  {path   : 'categorias/form/:id', component : CategoriaFormComponent},
+  {path   : '', component : CategoriaComponent},
+  {path   : 'form', component : CategoriaFormComponent},
+  {path   : 'form/:id', component : CategoriaFormComponent},
 
 ];
 

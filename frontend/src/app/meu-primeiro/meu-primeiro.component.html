@@ -1,6 +1,8 @@
 
 <p>meu-primeiro works!</p>
 
+
+
 {{ titulo }}
 <br>
 {{ curso }}
@@ -11,6 +13,7 @@
 <br>
 
 
+
 <input #tituloInput [value]= "titulo" (keyup)="onInput(tituloInput.value)" />
 <br>
 
@@ -19,9 +22,9 @@
 
 <button [class]="getClass()"
         [class.btn] = "isDisabled()"
-        [disabled] = "isDisabled()" 
+        [disabled] = "isDisabled()"
         [style.backgroundColor] = "getClass()"
         (click) = "onButtonClick()"
-        > Meu botão 
+        > Meu botão
 </button>
 

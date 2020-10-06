@@ -4,10 +4,11 @@ import { MostrarErrosComponent } from './components/mostrar-erros/mostrar-erros.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule} from 'ngx-toastr';
+import { ExemplosPipe } from './pipes/exemplos.pipe';
 
 
 @NgModule({
-  declarations: [MostrarErrosComponent],
+  declarations: [MostrarErrosComponent, ExemplosPipe],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -20,7 +21,8 @@ import { ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule
+    ToastrModule,
+    ExemplosPipe
 ],
 })
 

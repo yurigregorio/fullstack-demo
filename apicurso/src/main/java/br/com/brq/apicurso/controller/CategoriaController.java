@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.brq.apicurso.model.Categoria;
 import br.com.brq.apicurso.service.CategoriaService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class CategoriaController {
@@ -23,30 +24,35 @@ public class CategoriaController {
 	
 	//lista todos os categorias
 	@GetMapping(value = "categorias")
+	@ApiOperation(value = "Retorna todas as categorias")
 	public List<Categoria> getAll() {
 		return this.categoriaService.findAll();
 	}
 	
 	//lista um categoria, pelo id
 	@GetMapping(value="categorias/{id}")
+	@ApiOperation(value = "Retorna uma categoria específica")
 	public Categoria getOne(@PathVariable int id){
 		return this.categoriaService.getOne(id);
 	}	
 	
 	//inserindo um novo categoria
 	@PostMapping(value="categorias")
+	@ApiOperation(value = "Cadastra uma nova categoria")
 	public Categoria create(@RequestBody Categoria categoria) {
 		return this.categoriaService.save(categoria);
 	}
 	
 	//alterando os dados de um categoria, pelo id
 	@PatchMapping(value="categorias/{id}")
+	@ApiOperation(value = "Altera uma categoria existente")
 	public Categoria update(@RequestBody Categoria categoria, @PathVariable int id) {
 		return this.categoriaService.update(id, categoria);
 	}
 	
 	//deletando um categoria,
 	@DeleteMapping(value="categorias/{id}")
+	@ApiOperation(value = "Deleta uma categoria")
 	public void delete(@PathVariable int id) {
 		this.categoriaService.delete(id);
 	}

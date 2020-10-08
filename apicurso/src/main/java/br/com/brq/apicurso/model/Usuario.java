@@ -1,6 +1,12 @@
 package br.com.brq.apicurso.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,8 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import br.com.brq.apicurso.model.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,7 +37,18 @@ public class Usuario {
 	private String email;
 	
 	@OneToOne
-	@JoinColumn (name = "endereco_id")
-	
+	@JoinColumn ( name = "endereco_id" )
 	private Endereco endereco;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
+	
+	public void addPerfil(Perfil perfil) {
+		if (perfis == null) {
+			perfis = new HashSet<>();
+		}
+		
+		perfis.add( perfil.getCodigo() );
+	}
 }

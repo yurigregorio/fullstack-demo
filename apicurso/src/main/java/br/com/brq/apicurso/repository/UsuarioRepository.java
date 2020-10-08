@@ -7,5 +7,7 @@ import br.com.brq.apicurso.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+	
+	public Usuario findByEmail(String email);
 
 }

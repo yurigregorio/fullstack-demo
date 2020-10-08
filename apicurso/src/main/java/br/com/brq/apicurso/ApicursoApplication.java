@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.brq.apicurso.model.Categoria;
 import br.com.brq.apicurso.model.Endereco;
 import br.com.brq.apicurso.model.Imagem;
 import br.com.brq.apicurso.model.Produto;
 import br.com.brq.apicurso.model.Usuario;
+import br.com.brq.apicurso.model.enums.Perfil;
 import br.com.brq.apicurso.repository.CategoriaRepository;
 import br.com.brq.apicurso.repository.EnderecoRepository;
 import br.com.brq.apicurso.repository.ImagemRepository;
@@ -37,6 +39,9 @@ public class ApicursoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private EnderecoRepository	enderecoRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApicursoApplication.class, args);
@@ -114,13 +119,19 @@ public class ApicursoApplication implements CommandLineRunner {
 						.numero("1")
 						.build();
 		
-		Usuario u = Usuario.builder()
-					.nome("Usuário 1")
-					.email("usuarioONE@usuario.com")
+		//SELECT * FROM usuario;
+				Usuario u = Usuario.builder()
+					.nome("Usuário 2")
+					.email("usuario@usuario.com")
 					.senha("123456")
+					.senha( this.bCryptPasswordEncoder.encode("123456") )
 					.endereco(end1)
 					.build();		
 		
+				u.addPerfil(Perfil.ADMIN);
+				u.addPerfil(Perfil.CLIENTE);
+				
+				
 		this.enderecoRepository.save(end1);
 		u = this.usuarioRepository.save(u);
 

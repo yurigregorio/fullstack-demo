@@ -41,9 +41,9 @@ public class AutenticacaoController {
 
 		String username = ((CredencialSecurityModel) authentication.getPrincipal()).getUsername();
 		String nome = ((CredencialSecurityModel) authentication.getPrincipal()).getNome();
-		//String authorities = CredendialService.getAuthorityToString(authentication);
+		// String authorities = CredendialService.getAuthorityToString(authentication);
 		String authorities = ((CredencialSecurityModel) authentication.getPrincipal()).getAuthorityToString();
-
+		
 		final String token = jwtUtil.generateToken(username, nome, authorities);
 
 		AuthToken myToken = new AuthToken(token);

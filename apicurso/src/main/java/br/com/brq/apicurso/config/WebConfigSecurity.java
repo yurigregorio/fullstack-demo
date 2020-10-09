@@ -1,3 +1,4 @@
+  
 package br.com.brq.apicurso.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.brq.apicurso.security.JwtAutenticacaoFiltro;
+import br.com.brq.apicurso.security.JwtAutorizacaoFiltro;
 import br.com.brq.apicurso.security.JwtUtil;
 import br.com.brq.apicurso.service.CredentialDetailsServiceImpl;
-
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 @EnableWebSecurity
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
-	
 	private static final String[] PUBLIC_ENDPOINT = {
-			"/swagger-ui.html"
+		"/swagger-ui.html"	
 	};
 	
 	private static final String[] PUBLIC_ENDPOINT_GET = {
@@ -31,9 +31,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	};
 	
 	private static final String[] PUBLIC_ENDPOINT_POST = {
-			"/autenticacao" 
+			"/autenticacao"	
 	};
-	
+		
 	@Autowired
 	private CredentialDetailsServiceImpl userDetailsService;
 		
@@ -56,19 +56,17 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	}
 
 	protected void configure( HttpSecurity http ) throws Exception {
-		
 		//http.csrf().disable().authorizeRequests().anyRequest().permitAll();
-		http.cors().and().csrf().disable().csrf().disable()
-			.authorizeRequests()
-			.antMatchers(HttpMethod.POST,  PUBLIC_ENDPOINT_POST).permitAll()
-			.antMatchers(HttpMethod.GET, PUBLIC_ENDPOINT_GET).permitAll()			
+		http.cors().and().csrf().disable().authorizeRequests()
+			.antMatchers(HttpMethod.GET, PUBLIC_ENDPOINT_GET).permitAll()
+			.antMatchers(HttpMethod.POST, PUBLIC_ENDPOINT_POST).permitAll()
 			.antMatchers(PUBLIC_ENDPOINT).permitAll()
 			.anyRequest().authenticated()
 			.and()
             //gerenciamenteo de sessão STATELESS
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-			
 		
 		http.addFilter( new JwtAutenticacaoFiltro( authenticationManager(), jwtUtil));
+		http.addFilter(new JwtAutorizacaoFiltro(authenticationManager() , jwtUtil, userDetailsService));
 	}
 }

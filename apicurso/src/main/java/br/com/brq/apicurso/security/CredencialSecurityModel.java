@@ -1,3 +1,4 @@
+  
 package br.com.brq.apicurso.security;
 
 import java.util.Collection;
@@ -12,6 +13,7 @@ import br.com.brq.apicurso.model.enums.Perfil;
 
 public class CredencialSecurityModel implements UserDetails {
 
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String email;
 	private String senha;
@@ -21,7 +23,7 @@ public class CredencialSecurityModel implements UserDetails {
 	public CredencialSecurityModel() {
 	}
 	
-	public CredencialSecurityModel(Integer id, String email, String senha, String nome, Set<Perfil> perfis) {
+	public CredencialSecurityModel(int id, String email, String senha, String nome, Set<Perfil> perfis ) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -97,7 +99,7 @@ public class CredencialSecurityModel implements UserDetails {
 	}
 	
 	public boolean hasRole(Perfil perfil) {
-		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));		
 	}
 	
 	

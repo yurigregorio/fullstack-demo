@@ -18,7 +18,7 @@ public enum Perfil {
 		this.descricao = descricao;
 	}
 	
-	public Perfil toEnum(int codigo) {
+	public static Perfil toEnum(int codigo) {
 				
 		for (Perfil p : Perfil.values() ) {
 			if (p.getCodigo() == codigo) {

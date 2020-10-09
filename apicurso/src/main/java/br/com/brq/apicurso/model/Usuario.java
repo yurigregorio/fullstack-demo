@@ -2,6 +2,7 @@ package br.com.brq.apicurso.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -18,6 +19,7 @@ import br.com.brq.apicurso.model.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -44,6 +46,11 @@ public class Usuario {
 	@CollectionTable(name = "PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
 	
+	
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
 	public void addPerfil(Perfil perfil) {
 		if (perfis == null) {
 			perfis = new HashSet<>();
@@ -51,4 +58,5 @@ public class Usuario {
 		
 		perfis.add( perfil.getCodigo() );
 	}
+	
 }

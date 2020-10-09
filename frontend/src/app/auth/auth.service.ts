@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { AuthToken } from './model/auth-token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpCliente: HttpClient) { }
+  url : string = `${environment.urlApi}/autenticacao`;
 
-public logar(body:any){
-  return this.httpCliente.post('http://localhost:8081/autenticacao', body);
-}
+  constructor(private http: HttpClient) { }
 
+  public login( credential : Credential ){
+    return this.http.post<AuthToken>( this.url, credential );
+  }
 }

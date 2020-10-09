@@ -1,3 +1,4 @@
+  
 package br.com.brq.apicurso;
 
 import java.util.ArrayList;
@@ -36,9 +37,9 @@ public class ApicursoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ImagemRepository imagemRepository;
-	
+
 	@Autowired
-	private EnderecoRepository	enderecoRepository;
+	private EnderecoRepository enderecoRepository;
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder; 
@@ -76,11 +77,6 @@ public class ApicursoApplication implements CommandLineRunner {
 				.preco(2500)
 				.build();
 			
-		
-		Imagem img2 = Imagem.builder().url("Testedeimagemdois.com").build();
-		img2.setProdutos(Arrays.asList(prod1));
-		prod1.setImagens(Arrays.asList(img2));
-		this.imagemRepository.save(img2);
 		this.produtoRepository.save(prod1);
 
 		
@@ -98,7 +94,7 @@ public class ApicursoApplication implements CommandLineRunner {
 //		arr.add(prod2);
 		
 		Imagem img = Imagem.builder().url("http://localhost:8080").build();
-
+		
 		//associando os objetos
 		img.setProdutos( Arrays.asList(prod2)  );		
 		prod2.setImagens( Arrays.asList(img) );
@@ -108,33 +104,28 @@ public class ApicursoApplication implements CommandLineRunner {
 				
 		//System.out.println(this.imagemRepository.findAll());
 		
-		
 		Endereco end1 = Endereco
-						.builder()
-						.bairro("Vila Boa")
-						.cep("06253-459")
-						.cidade("Esperanca")
-						.estado("SP")
-						.logradouro("Avenida Africa")
-						.numero("1")
-						.build();
-		
+				.builder()
+				.bairro("Vila Bela")
+				.cep("43454-098")
+				.cidade("São Paulo")
+				.estado("SP")
+				.logradouro("Avenida Brasil")
+				.numero("1")
+				.build();
 		//SELECT * FROM usuario;
-				Usuario u = Usuario.builder()
-					.nome("Usuário 2")
-					.email("usuario@usuario.com")
-					.senha("123456")
-					.senha( this.bCryptPasswordEncoder.encode("123456") )
-					.endereco(end1)
-					.build();		
+		Usuario u = Usuario.builder()
+			.nome("Usuário 2")
+			.email("usuario@usuario.com")
+			.senha( this.bCryptPasswordEncoder.encode("123456") )
+			.endereco(end1)
+			.build();	
 		
-				u.addPerfil(Perfil.ADMIN);
-				u.addPerfil(Perfil.CLIENTE);
-				
+		u.addPerfil(Perfil.ADMIN);
+		u.addPerfil(Perfil.CLIENTE);
 				
 		this.enderecoRepository.save(end1);
-		u = this.usuarioRepository.save(u);
-
+		this.usuarioRepository.save(u);
 	}
 
 }

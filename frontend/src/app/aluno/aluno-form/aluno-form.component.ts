@@ -19,7 +19,7 @@ export class AlunoFormComponent implements OnInit {
   constructor(
     private alunoService : AlunoService,
     private formBuilder       : FormBuilder,
-    private activatedRoute     : ActivatedRoute,
+    private activatedRoute    : ActivatedRoute,
     private router            : Router,
     private toastr            : ToastrService)
 

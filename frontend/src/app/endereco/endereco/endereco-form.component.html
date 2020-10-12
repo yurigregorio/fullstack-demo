@@ -1,0 +1,44 @@
+
+<form [formGroup]="meuForm" (submit)="onSubmit()">
+
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">CEP</label>
+    <input type="text" class="form-control" formControlName="cep" placeholder="CEP" (blur)="buscarCep()">
+  </div>
+
+  <app-mostrar-erros [isError]="isErrorField( 'cep' )" [mensagem]="'CEP obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
+
+  <div class="form-group">
+    <label >Logradouro</label>
+    <input type="text" class="form-control" formControlName="logradouro" placeholder="Logradouro">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'senha' )" [mensagem]="'Senha obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
+
+  <div class="form-group">
+    <label >Bairro</label>
+    <input type="text" class="form-control" formControlName="Bairro" placeholder="Bairro">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'Bairro' )" [mensagem]="'Bairro obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
+
+  <div class="form-group">
+    <label >Cidade</label>
+    <input type="text" class="form-control" formControlName="Cidade" placeholder="Cidade">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'Cidade' )" [mensagem]="'Cidade obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
+
+
+
+  <div class="form-group">
+    <label >UF</label>
+    <input type="text" class="form-control" formControlName="UF" placeholder="UF">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'UF' )" [mensagem]="'UF obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
+
+
+
+
+
+  <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary">Logar</button>
+
+</form>

@@ -1,0 +1,29 @@
+<form [formGroup]= "meuForm" (submit)= "onSubmit()" >
+  <br>
+    <div class="form-group ">
+      <label for="exampleInputEmail1">Produto</label>
+      <input type="text" class="form-control" formControlName="nomeproduto" placeholder="Nome do produto">
+    </div>
+    <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Descrição</label>
+      <textarea type="text" class="form-control" formControlName = "descricao" placeholder="Descrição da categoria"></textarea>
+  </div>
+  <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Categoria</label>
+    <select name="categorias" class="form-control" formControlName = "cat" >
+      <option value = "Eletro"> Eletro </option>
+      <option value = "Nao"> Nao </option>
+    </select>
+  </div>
+  <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
+
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/produtos']" >Voltar</button>
+  </div>
+
+  </form>

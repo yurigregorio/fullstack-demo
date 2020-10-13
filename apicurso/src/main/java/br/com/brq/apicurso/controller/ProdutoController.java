@@ -19,7 +19,7 @@ import br.com.brq.apicurso.model.Produto;
 import br.com.brq.apicurso.service.ProdutoService;
 
 @RestController
-@RequestMapping (value="produtos") //fica o começo do url
+@RequestMapping (value="produtos") //fixa o começo do url
 public class ProdutoController {
 	
 	@Autowired

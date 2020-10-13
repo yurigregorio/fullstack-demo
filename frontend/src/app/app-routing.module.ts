@@ -7,9 +7,9 @@ const routes: Routes = [
   { path  : 'home'      , component    : MeuPrimeiroComponent },
   { path  : 'categorias', loadChildren : () => import('./categoria/categoria.module').then( (m) => m.CategoriaModule ) },
   { path  : 'alunos'    , loadChildren : () => import('./aluno/aluno.module').then( (m) => m.AlunoModule ) },
-  { path  : 'produtos'  , loadChildren : () => import('./produtos/produtos.module').then( (m) => m.ProdutosModule ) },
   { path  : 'auth'      , loadChildren : () => import('./auth/auth.module').then( m => m.AuthModule)},
   { path  : 'endereco'  , loadChildren : () => import('./endereco/endereco.module').then( m => m.EnderecoModule)},
+  { path  : 'produtos'  , loadChildren : () => import('./admin/admin.module').then( m => m.AdminModule)},
 ];
 
 @NgModule({

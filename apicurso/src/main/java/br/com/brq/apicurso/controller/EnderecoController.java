@@ -33,6 +33,13 @@ public class EnderecoController {
 	public Optional<Endereco> consultarEnderecoId(@PathVariable int id) {
 		return this.enderecoService.consultarEnderecoId(id);
 	}
+	
+	@PostMapping("/inserirEndereco/usuario/{id}")
+	public Endereco inserirEnderecoPorIdUrl(@RequestBody EnderecoDto endereco) {
+		System.out.println(endereco);
+		return this.enderecoService.inserirEndereco(endereco);
+		
+	}
 
 	@PostMapping("/usuario")
 	public Endereco inserirEndereco(@RequestBody Endereco endereco) {
@@ -40,7 +47,7 @@ public class EnderecoController {
 		return this.enderecoService.inserirEndereco(endereco);
 		
 	}
-
+	
 	@PatchMapping("/alterarEndereco/{id}")
 	public Endereco alterarEndereco(@PathVariable int id, @RequestBody Endereco endereco) {
 		return this.enderecoService.alterarEndereco(id, endereco);

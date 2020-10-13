@@ -23,11 +23,17 @@ import br.com.brq.apicurso.service.CredentialDetailsServiceImpl;
 @EnableWebSecurity
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	private static final String[] PUBLIC_ENDPOINT = {
-		"/swagger-ui.html"	
+			"/v2/api-docs",
+            "/configuration/ui",
+            "/swagger-resources/**",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**"
 	};
+
 	
 	private static final String[] PUBLIC_ENDPOINT_GET = {
-			"/produtos"
+			"/produtos", "/csrf", "/"
 	};
 	
 	private static final String[] PUBLIC_ENDPOINT_POST = {

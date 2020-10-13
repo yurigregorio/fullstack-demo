@@ -61,15 +61,6 @@ export class FormEnderecoComponent implements OnInit {
     let usuarioStorage : Usuario = this.storageService.getLocalUser();
     console.log (this.usuarioForm.value);
 
-    /**
-     *
-     * { var1: 1}
-     *
-     * { var2:2 }
-     *
-     * assing: { var1: 1, var2:2 }
-     */
-
     let body = Object.assign(this.usuarioForm.value, { usuario : { id: usuarioStorage.id } } );
 
     this.enderecoService.salvarEndereco( body )

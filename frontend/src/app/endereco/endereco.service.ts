@@ -16,4 +16,8 @@ export class EnderecoService {
   public salvarEndereco(body) {
     return this.httpClient.post ( `http://localhost:8081/enderecos/usuario`, body);
   }
+
+  public salvarEnderecoPorId(id, body) {
+    return this.httpClient.post ( `http://localhost:8081/enderecos/usuario${id}`, body);
+  }
 }

@@ -1,3 +1,4 @@
+  
 package br.com.brq.apicurso.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +40,13 @@ public class AutenticacaoController {
 
 		/* final String token = jwtTokenUtil.generateToken(authentication); */
 
+		int id = ((CredencialSecurityModel) authentication.getPrincipal()).getId();
 		String username = ((CredencialSecurityModel) authentication.getPrincipal()).getUsername();
 		String nome = ((CredencialSecurityModel) authentication.getPrincipal()).getNome();
 		// String authorities = CredendialService.getAuthorityToString(authentication);
 		String authorities = ((CredencialSecurityModel) authentication.getPrincipal()).getAuthorityToString();
 		
-		final String token = jwtUtil.generateToken(username, nome, authorities);
+		final String token = jwtUtil.generateToken(id,username, nome, authorities);
 
 		AuthToken myToken = new AuthToken(token);
 		

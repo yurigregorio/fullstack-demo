@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EnderecoComponent } from './endereco/endereco-form.component';
+import { FormEnderecoComponent } from './endereco/endereco-form.component';
 
 const routes: Routes = [
-  {path   : '' , component : EnderecoComponent},
+  {path   : '' , component : FormEnderecoComponent},
 ];
 
 @NgModule({
@@ -11,3 +11,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class EnderecoRoutingModule { }
+

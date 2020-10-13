@@ -34,13 +34,14 @@ public class JwtUtil {
 				.compact();
 	}
 	
-	public String generateToken(String email, String nome, String authorities) {
+	public String generateToken(int id, String email, String nome, String authorities) {
 		
 				
 		return Jwts.builder()
 				.setSubject(email)
 				.claim(authorities_key, authorities)
 				.claim(nome_credencial, nome)
+				.claim("id", id)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())

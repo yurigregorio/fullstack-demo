@@ -1,31 +1,38 @@
+<form [formGroup]="meuForm" (submit)="onSubmit()">
 
+  <div class="form-group " *ngIf="isEdicao">
+    <label for="exampleInputEmail1">ID</label>
+    <input type="text" class="form-control" [readOnly]="true" formControlName="id" placeholder="ID do Aluno">
+  </div>
 
-<br>
-<form [formGroup] = "meuForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome</label>
+    <input type="text" class="form-control" formControlName="nome" placeholder="Nome do Aluno">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'nome' )" [mensagem]="'Nome obrigatório'"
+    (notificador)="receberNotificacao($event)"
+  >
+  </app-mostrar-erros>
 
-    <div class="form-group">
-      <label for="exampleInputPassword1">Nome</label>
-      <input type="text" class="form-control" formControlName = "nome" placeholder="Nome">
-    </div>
-    <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
+  <!-- Valid: {{ meuForm.controls.nome.valid }} -->
 
-    <div class="form-group">
-        <label for="exampleInputPassword1">RA</label>
-        <input type="text" class="form-control" formControlName = "ra" placeholder="RA">
-    </div>
-    <app-mostrar-erros [isError]= "isErrorField('ra')" [mensagem] = "'RA obrigatório!'" > </app-mostrar-erros>
+  <div class="form-group">
+    <label for="exampleInputEmail1">RA</label>
+    <input type="text" class="form-control" formControlName="ra" placeholder="RA do Aluno">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'ra' )" [mensagem]="'RA obrigatório'"
+    (notificador)="receberNotificacao($event)"></app-mostrar-erros>
 
-    <div class="form-group">
-        <label for="exampleInputPassword1">Curso</label>
-        <input type="text" class="form-control" formControlName = "curso" placeholder="Curso">
-    </div>
-    <app-mostrar-erros [isError]= "isErrorField('curso')" [mensagem] = "'Curso obrigatório!'" > </app-mostrar-erros>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Curso</label>
+    <input type="text" class="form-control" formControlName="curso" placeholder="Curso do Aluno">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'curso' )" [mensagem]="'Curso obrigatório'"
+    (notificador)="receberNotificacao($event)"></app-mostrar-erros>
 
-    <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-primary mr-2" [disabled]="meuForm.valid == false" > {{ textoBotao }}</button>
-      <button type="button" class="btn btn-secondary"  [routerLink]="['/alunos']" > Voltar </button>
-    </div>
+<div class="d-flex justify-content-center">
+  <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary mr-2">{{ textoBotao }}</button>
+  <button type="button" class="btn btn-secondary" [routerLink]="['/alunos']" >Voltar</button>
+</div>
+  <!-- Form : {{ meuForm.valid }} -->
 </form>
-<br>
-
-

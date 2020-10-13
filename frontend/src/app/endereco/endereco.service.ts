@@ -1,17 +1,19 @@
+import { MeuFormComponent } from './../formulario/meu-form/meu-form.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnderecoService {
 
-urlApi = `${environment.urlApi}/endereco`;
+  constructor(private httpClient: HttpClient) { }
 
-constructor(private httpClient: HttpClient) { }
+  public enderecoApi(cep: any) {
+    return this.httpClient.get(`https://viacep.com.br/ws/${cep}/json/`);
+  }
 
-getCEP(cepDigitado:any){
-  return this.httpClient.get(`viacep.com.br/ws/${cepDigitado}/json/`)
-}
+  public salvarEndereco(id, body) {
+    return this.httpClient.patch ( `http://localhost:8081/enderecos/${id}`, body);
+  }
 }

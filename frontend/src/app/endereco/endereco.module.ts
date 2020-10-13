@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EnderecoRoutingModule } from './endereco-routing.module';
-import { EnderecoComponent } from './endereco/endereco-form.component';
+import { FormEnderecoComponent } from './endereco/endereco-form.component';
 import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [EnderecoComponent],
+  declarations: [FormEnderecoComponent],
   imports: [
     CommonModule,
     EnderecoRoutingModule,

@@ -2,6 +2,7 @@ package br.com.brq.apicurso.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,14 +38,14 @@ public class Produto {
 	private String descricao;
 	private float preco;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn (name = "categoria_id")	//cria uma coluna "categoria_id" que guarda a categoria.
+	@ManyToOne
+	@JoinColumn (name = "categoria_id")	
 	private Categoria categoria;
 	
 	@ManyToMany
 	@JoinTable( name = "produto_imagem",
-				joinColumns = @JoinColumn(name="produto_id"),
-				inverseJoinColumns = @JoinColumn(name="imagem_id")
-	)			
+		joinColumns = @JoinColumn(name="produto_id"),
+		inverseJoinColumns = @JoinColumn(name="imagem_id")
+	)		
 	private List<Imagem> imagens;
 }

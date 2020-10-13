@@ -1,44 +1,40 @@
-
 <form [formGroup]="meuForm" (submit)="onSubmit()">
+  <div class="form-group row mt-4">
+      <div class="form-group col-md-4">
+          <label for="exampleInputEmail1"> CEP </label>
+          <input type="text" class="form-control" formControlName="cep" placeholder="Digite o CEP..." (blur)="buscarCep()">
+      </div>
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'cep' )" [mensagem]="'Cep obrigatório'"
+      (notificador)="receberNotificacao($event)"></app-mostrar-erros>
 
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">CEP</label>
-    <input type="text" class="form-control" formControlName="cep" placeholder="CEP" (blur)="buscarCep()">
+  <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">Logradouro</label>
+      <input type="text" class="form-control" formControlName="logradouro" placeholder="Logradouro">
   </div>
 
-  <app-mostrar-erros [isError]="isErrorField( 'cep' )" [mensagem]="'CEP obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
-
-  <div class="form-group">
-    <label >Logradouro</label>
-    <input type="text" class="form-control" formControlName="logradouro" placeholder="Logradouro">
+  <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">Número</label>
+      <input type="text" class="form-control" formControlName="numero" placeholder="Numero">
   </div>
-  <app-mostrar-erros [isError]="isErrorField( 'senha' )" [mensagem]="'Senha obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
 
-  <div class="form-group">
-    <label >Bairro</label>
-    <input type="text" class="form-control" formControlName="Bairro" placeholder="Bairro">
+  <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">Bairro</label>
+      <input type="text" class="form-control" formControlName="bairro" placeholder="Bairro">
   </div>
-  <app-mostrar-erros [isError]="isErrorField( 'Bairro' )" [mensagem]="'Bairro obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
 
-  <div class="form-group">
-    <label >Cidade</label>
-    <input type="text" class="form-control" formControlName="Cidade" placeholder="Cidade">
+  <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">Estado</label>
+      <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
   </div>
-  <app-mostrar-erros [isError]="isErrorField( 'Cidade' )" [mensagem]="'Cidade obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
 
-
-
-  <div class="form-group">
-    <label >UF</label>
-    <input type="text" class="form-control" formControlName="UF" placeholder="UF">
+  <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">Cidade</label>
+      <input type="text" class="form-control" formControlName="cidade" placeholder="Cidade">
   </div>
-  <app-mostrar-erros [isError]="isErrorField( 'UF' )" [mensagem]="'UF obrigatório'" (notificador)="receberNotificacao($event)"> </app-mostrar-erros>
 
-
-
-
-
-  <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary">Logar</button>
-
+  <div class="d-flex justify-content-center">
+      <button type="submit" (click)="salvarCep()" class="btn btn-warning text-dark mr-2 mt-2 mb-4">Atualizar endereço</button>
+  </div>
 </form>

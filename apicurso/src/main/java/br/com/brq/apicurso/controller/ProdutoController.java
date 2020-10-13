@@ -51,7 +51,7 @@ public class ProdutoController {
 		this.produtoService.delete(id);
 	}
 	
-	@GetMapping (value = "paginador")
+	@GetMapping (value = "paginador/produtos")
 	public Page<Produto> paginacao(
 			@RequestParam (value="pagina", defaultValue ="0") int pagina,
 			@RequestParam (value="linhas", defaultValue ="5") int linhas

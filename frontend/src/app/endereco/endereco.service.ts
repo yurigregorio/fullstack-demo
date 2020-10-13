@@ -13,7 +13,7 @@ export class EnderecoService {
     return this.httpClient.get(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
-  public salvarEndereco(id, body) {
-    return this.httpClient.patch ( `http://localhost:8081/enderecos/${id}`, body);
+  public salvarEndereco(body) {
+    return this.httpClient.post ( `http://localhost:8081/enderecos/usuario`, body);
   }
 }

@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +37,7 @@ public class Endereco {
 	private String cidade;
 	
 	@OneToOne(mappedBy = "endereco")
-	@JsonIgnore
+	@JsonIgnoreProperties
 	private Usuario usuario;
 	
 }

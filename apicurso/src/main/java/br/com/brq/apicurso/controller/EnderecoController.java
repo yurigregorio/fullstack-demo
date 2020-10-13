@@ -34,10 +34,11 @@ public class EnderecoController {
 		return this.enderecoService.consultarEnderecoId(id);
 	}
 
-	@PostMapping("/inserirEndereco")
-	public Endereco inserirEndereco(@RequestBody EnderecoDto endereco) {
+	@PostMapping("/usuario")
+	public Endereco inserirEndereco(@RequestBody Endereco endereco) {
 		System.out.println(endereco);
 		return this.enderecoService.inserirEndereco(endereco);
+		
 	}
 
 	@PatchMapping("/alterarEndereco/{id}")
@@ -45,8 +46,8 @@ public class EnderecoController {
 		return this.enderecoService.alterarEndereco(id, endereco);
 	}
 
-	@DeleteMapping("/deletarProduto/{id}")
-	public String deletarProduto(@PathVariable int id) {
+	@DeleteMapping("/deletarEndereco/{id}")
+	public String deletarEndereco(@PathVariable int id) {
 		return this.enderecoService.deletarEndereco(id);
 	}
 	

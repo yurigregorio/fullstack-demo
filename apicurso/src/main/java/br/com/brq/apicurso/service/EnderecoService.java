@@ -30,13 +30,14 @@ public class EnderecoService {
 	}
 	
 	public Endereco inserirEndereco(Endereco endereco) {
+		Endereco end = null;
 		if(endereco.getUsuario() != null  && endereco.getUsuario().getId() > 0) {
 			Usuario usuario = this.usuarioRepository.findById(endereco.getUsuario().getId()).get();
-			this.enderecoRepository.save(endereco);
-			usuario.setEndereco(endereco);
+			end =  this.enderecoRepository.save(endereco);
+			usuario.setEndereco(end);
 			this.usuarioRepository.save(usuario);
 		}
-		return endereco;
+		return end;
 	}
 	
 	public Endereco inserirEndereco(EnderecoDto endereco) {

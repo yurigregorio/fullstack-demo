@@ -1,9 +1,11 @@
-
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EnderecoService } from './../endereco.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/shared/model/usuario';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { EnderecoService } from '../endereco.service';
+import { EnderecoUsuario } from './model/endereco-usuario';
 
 
 @Component({
@@ -12,61 +14,72 @@ import { StorageService } from 'src/app/shared/services/storage.service';
   styleUrls: ['./endereco-form.component.scss']
 })
 export class FormEnderecoComponent implements OnInit {
-  meuForm : FormGroup;
-  login: any;
+  usuarioForm:FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder ,
-    private enderecoService : EnderecoService,
-    private activatedRoute: ActivatedRoute,
-    private router : Router,
-    private storageService: StorageService
-  ) {
-    this.meuForm = this.formBuilder.group({
-      // valor inicial e os validadores
-      cep:    ["", [Validators.required]],
-      logradouro: [""],
-      numero: [""],
-      bairro: [""],
-      estado: [""],
-      cidade: [""]
-    });
+    private enderecoService:EnderecoService,
+    private meuForm:FormBuilder,
+    private storageService : StorageService,
+    private activetedRoute : ActivatedRoute,
+    private router: Router,
+  ){
+
   }
 
-ngOnInit(): void {
-}
+  ngOnInit(): void {
 
-onSubmit() {}
-
-public isErrorField(fieldName){
-  return (this.meuForm.get( fieldName ).valid == false && this.meuForm.get( fieldName ).touched == true);
-}
-
-public receberNotificacao(event) {
-  console.log(event);
-}
-
-public buscarCep(){
-  this.enderecoService.enderecoApi(this.meuForm.value.cep)
-  .subscribe(
-    (response:any) => {
-      console.log(response);
-      this.meuForm.patchValue({estado:response.uf,bairro:response.bairro,cidade:response.localidade, logradouro:response.logradouro});
-    }
-  );
-}
-
-public salvarCep() {
-  this.login = this.storageService.getLocalUser();
-  console.log(this.login.id);
-
-  this.enderecoService.salvarEndereco(this.login.id, this.meuForm.value)
-    .subscribe(
-      (sucess: any) => {
-        console.log(sucess);
-      }
+    this.usuarioForm = this.meuForm.group(
+      {
+        cep:['',[Validators.required,Validators.maxLength(8)]],
+        logradouro:['',[Validators.required]],
+        numero:['',[Validators.required]],
+        complemento:['',[]],
+        bairro:['',[Validators.required]],
+        cidade:['',[Validators.required]],
+        estado:['',[Validators.required]]
+        }
     );
-}
+  }
+
+  public consultaCEP(){
+    return this.enderecoService.enderecoApi(this.usuarioForm.value.cep).subscribe(
+      (response:EnderecoUsuario)=>{
+        let endereco = {
+            logradouro:response.logradouro,
+            estado:response.uf,
+            bairro:response.bairro,
+            cidade:response.localidade
+        };
+        this.usuarioForm.patchValue(endereco);
+      },
+      (error)=>{
+        console.log(JSON.stringify(error));
+      }
+    )
+  }
+  public onSubmit(){
+    let usuarioStorage : Usuario = this.storageService.getLocalUser();
+    console.log (this.usuarioForm.value);
+
+    /**
+     *
+     * { var1: 1}
+     *
+     * { var2:2 }
+     *
+     * assing: { var1: 1, var2:2 }
+     */
+
+    let body = Object.assign(this.usuarioForm.value, { usuario : { id: usuarioStorage.id } } );
+
+    this.enderecoService.salvarEndereco( body )
+      .subscribe(
+        (success) => {
+
+        }
+      );
+
+  }
 
 
 }

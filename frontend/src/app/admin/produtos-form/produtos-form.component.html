@@ -2,7 +2,7 @@
   <br>
     <div class="form-group ">
       <label for="exampleInputEmail1">Produto</label>
-      <input type="text" class="form-control" formControlName="nomeproduto" placeholder="Nome do produto">
+      <input type="text" class="form-control" formControlName="nome" placeholder="Nome do produto">
     </div>
     <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
 
@@ -13,17 +13,25 @@
   <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
 
   <div class="form-group">
-    <label for="exampleInputPassword1">Categoria</label>
-    <select name="categorias" class="form-control" formControlName = "cat" >
-      <option value = "Eletro"> Eletro </option>
-      <option value = "Nao"> Nao </option>
+    <label for="exampleInputPassword1">Preço</label>
+    <input type="text" class="form-control" formControlName = "preco" placeholder="Preço do produto.">
+</div>
+<app-mostrar-erros [isError]= "isErrorField('preco')" [mensagem] = "'Preço obrigatória!'" > </app-mostrar-erros>
+
+
+<div class="form-group">
+  <label class="mr-sm-2" for="inlineFormCustomSelect">Categoria</label>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+      <option selected>Escolha...</option>
+      <option *ngFor="let categoria of categoriasDaBox" [value]="categoria.id">{{categoria.nome}} </option>
     </select>
   </div>
-  <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
+
+  <app-mostrar-erros [isError]= "isErrorField('categoria')" [mensagem] = "'Categoria obrigatória!'" > </app-mostrar-erros>
 
   <div class="d-flex justify-content-center">
     <button type="submit" class="btn btn-primary mr-2">Salvar</button>
-    <button type="button" class="btn btn-secondary" [routerLink]="['/produtos']" >Voltar</button>
+    <button type="button" class="btn btn-secondary" [routerLink]= "['/produtos']" >Voltar</button>
   </div>
 
   </form>

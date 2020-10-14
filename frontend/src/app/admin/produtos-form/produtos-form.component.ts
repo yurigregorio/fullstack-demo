@@ -15,18 +15,19 @@ export class ProdutosFormComponent implements OnInit {
   isEdicao : boolean = false;
   idProduto : number = 0;
   textoBotao : String = 'Salvar';
-  meuForm : FormGroup
+  meuForm : FormGroup;
+  public categoriasDaBox : any = [];
 
   constructor(
     private formBuilder : FormBuilder,
     private produtoService: ProdutosService,
     private activetedRoute : ActivatedRoute,
     private router : Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
     this.meuForm = this.formBuilder.group( {
       //valor inicial e os validadores
-      id : [ '', [  ] ],
+      //id : [ '', [  ] ],
       nome : [ '', [ Validators.required ] ],
       descricao: ['', [ Validators.required ] ],
       preco : [ '', [ Validators.required ] ],
@@ -35,6 +36,7 @@ export class ProdutosFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.preencherSelectBoxComCategorias();
     this.activetedRoute
     .params
     .subscribe(
@@ -48,6 +50,14 @@ export class ProdutosFormComponent implements OnInit {
 
       }
     );
+  }
+  preencherSelectBoxComCategorias(){
+    this.produtoService.pegarCategorias().subscribe( (dados) => {
+      this.categoriasDaBox = dados;
+      console.log(this.categoriasDaBox);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   onSubmit(){
@@ -70,26 +80,26 @@ export class ProdutosFormComponent implements OnInit {
     console.log (event);
   }
 
-  private createProduto( aluno ){
-    this.produtoService.createProduto(aluno)
+  private createProduto( produto ){
+    this.produtoService.createProduto(produto)
       .subscribe(
         (dados) => {
           console.log( dados );
-          this.router.navigate(['/alunos']);
+          this.router.navigate(['/produtos']);
           //alert ( JSON.stringify( dados ) );
-          this.toastr.success('Aluno criado com sucesso')
+          this.toastr.success('Produto criado com sucesso')
         }
       );
   }
 
-  private updateProduto(id, aluno){
-    this.produtoService.updateProduto(id,aluno)
+  private updateProduto(id, produto){
+    this.produtoService.updateProduto(id,produto)
       .subscribe(
         (dados)=>{
           console.log( dados );
-          this.router.navigate(['/alunos']);
+          this.router.navigate(['/produtos']);
         //  alert ( JSON.stringify( dados ) );
-          this.toastr.success('Aluno alterado com sucesso')
+          this.toastr.success('Produto alterado com sucesso')
         }
       );
   }
@@ -103,5 +113,8 @@ export class ProdutosFormComponent implements OnInit {
         }
       );
   }
+
+
+
 
 }

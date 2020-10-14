@@ -6,7 +6,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
 
 const routes: Routes = [
   { path : '' , component : ProdutosComponent },
-  { path : 'form' , component : ProdutosFormComponent }
+  { path : 'form' , component : ProdutosFormComponent },
+  { path : 'form/:id' , component : ProdutosFormComponent }
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ export class ProdutosService {
     return this.httpClient.get(this.urlApi);
   }
 
-  public deletarProduto(id :any){
+  deletarProduto(id :any){
     return this.httpClient.delete(`${this.urlApi }/${id}`)
   }
 
@@ -22,12 +22,17 @@ export class ProdutosService {
     return this.httpClient.patch( `${this.urlApi }/${id}` , produto );
   }
 
-  createProduto(produtoNovo : any){
-    return this.httpClient.post(this.urlApi , produtoNovo);
+  createProduto(newProduto : any){
+    return this.httpClient.post(this.urlApi , newProduto);
   }
 
   getOneProduto(idAluno : number){
     return this.httpClient.get(`${this.urlApi}/${idAluno}`);
   }
+
+  public pegarCategorias(){
+    return this.httpClient.get(`http://localhost:8081/categorias`);
+  }
+
 
 }

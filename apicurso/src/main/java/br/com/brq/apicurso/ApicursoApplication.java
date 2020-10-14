@@ -113,6 +113,8 @@ public class ApicursoApplication implements CommandLineRunner {
 				.logradouro("Avenida Brasil")
 				.numero("1")
 				.build();
+		
+		
 		//SELECT * FROM usuario;
 		Usuario u = Usuario.builder()
 			.nome("Usuário 2")
@@ -123,9 +125,19 @@ public class ApicursoApplication implements CommandLineRunner {
 		
 		u.addPerfil(Perfil.ADMIN);
 		u.addPerfil(Perfil.CLIENTE);
-				
+		
+		
+		Usuario c = Usuario.builder()
+				.nome("Cliente 1")
+				.email("cliente@cliente.com")
+				.senha( this.bCryptPasswordEncoder.encode("123456") )
+				.build();	
+			
+			c.addPerfil(Perfil.CLIENTE);
+			
 		this.enderecoRepository.save(end1);
 		this.usuarioRepository.save(u);
+		this.usuarioRepository.save(c);
 	}
 
 }

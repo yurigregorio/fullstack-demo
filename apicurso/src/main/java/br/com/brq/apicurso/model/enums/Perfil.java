@@ -8,7 +8,7 @@ public enum Perfil {
 //	public static int MARKETING = 3;
 	
 	ADMIN(1,"ROLE_ADMIN"),
-	CLIENTE (2,"ROLE_CLIENTE");
+	CLIENTE(2,"ROLE_CLIENTE");
 	
 	private int codigo;
 	private String descricao;

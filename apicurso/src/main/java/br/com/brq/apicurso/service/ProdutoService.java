@@ -55,7 +55,8 @@ public class ProdutoService {
  			update.setNome(produto.getNome());
  			update.setPreco(produto.getPreco());
  			update.setDescricao(produto.getDescricao());
- 		
+ 			update.setCategoria(produto.getCategoria()); 	
+ 			
  			update = this.produtoRepository.save(update);
  		}
  		

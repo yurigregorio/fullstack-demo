@@ -29,10 +29,10 @@ export class ProdutosFormComponent implements OnInit {
     this.meuForm = this.formBuilder.group( {
       //valor inicial e os validadores
       //id : [ '', [  ] ],
-      nome : [ '', [ Validators.required ] ],
-      descricao: ['', [ Validators.required ] ],
-      preco : [ '', [ Validators.required ] ],
-      categoria: [ '', [ Validators.required ] ]
+      nome :      [ '', [ Validators.required ] ],
+      descricao : ['', [ Validators.required ] ],
+      preco :     [ '', [ Validators.required ] ],
+      categoria : [ '', [ Validators.required ] ]
     } );
   }
 

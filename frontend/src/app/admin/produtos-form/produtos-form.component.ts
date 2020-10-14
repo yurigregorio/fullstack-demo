@@ -24,6 +24,7 @@ export class ProdutosFormComponent implements OnInit {
     private activetedRoute : ActivatedRoute,
     private router : Router,
     private toastr: ToastrService,
+
   ) {
     this.meuForm = this.formBuilder.group( {
       //valor inicial e os validadores
@@ -60,17 +61,17 @@ export class ProdutosFormComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    //alert('submit');
-    console.log( this.meuForm);
-    if (this.isEdicao){
-      this.updateProduto(this.idProduto, this.meuForm.value );
-    }
-    else{
-      this.createProduto( this.meuForm.value );
-    }
 
+ onSubmit(){
+  this.meuForm.value.categoria = this.categoriasDaBox.find(c => c.id == this.meuForm.value.categoria);
+
+  if(this.isEdicao){
+    this.updateProduto(this.idProduto, this.meuForm.value );
+  }else{
+    this.createProduto(this.meuForm.value);
   }
+  console.log(this.meuForm.value.categoria);
+}
 
   public isErrorField(fieldName){
     return (this.meuForm.get(fieldName).valid==false && this.meuForm.get(fieldName).touched==true);
@@ -81,12 +82,12 @@ export class ProdutosFormComponent implements OnInit {
   }
 
   private createProduto( produto ){
+    //this.meuForm.value.categoria = this.categoriasDaBox;
     this.produtoService.createProduto(produto)
       .subscribe(
         (dados) => {
           console.log( dados );
           this.router.navigate(['/produtos']);
-          //alert ( JSON.stringify( dados ) );
           this.toastr.success('Produto criado com sucesso')
         }
       );
@@ -98,7 +99,6 @@ export class ProdutosFormComponent implements OnInit {
         (dados)=>{
           console.log( dados );
           this.router.navigate(['/produtos']);
-        //  alert ( JSON.stringify( dados ) );
           this.toastr.success('Produto alterado com sucesso')
         }
       );

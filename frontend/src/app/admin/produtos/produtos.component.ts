@@ -32,7 +32,7 @@ export class ProdutosComponent implements OnInit {
     this.produtoService.deletarProduto(id)
       .subscribe(
         (dados) =>{
-            alert("aluno deletado com sucesso");
+            alert("Produto deletado com sucesso");
             this.getAllProdutos();
         }
       );

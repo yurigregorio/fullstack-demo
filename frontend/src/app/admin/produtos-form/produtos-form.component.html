@@ -18,19 +18,17 @@
 </div>
 <app-mostrar-erros [isError]= "isErrorField('preco')" [mensagem] = "'Preço obrigatória!'" > </app-mostrar-erros>
 
-
-<div class="form-group">
-  <label class="mr-sm-2" for="inlineFormCustomSelect">Categoria</label>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
-      <option selected>Escolha...</option>
-      <option *ngFor="let categoria of categoriasDaBox" [value]="categoria.id">{{categoria.nome}} </option>
+  <div>
+    <label for="categoriaProduto">Categoria</label>
+    <select class="form-control" formControlName="categoria" id="categoria">
+      <option *ngFor="let cat of categoriasDaBox" [value]="cat.id" >{{ cat.nome }}</option>
     </select>
   </div>
 
   <app-mostrar-erros [isError]= "isErrorField('categoria')" [mensagem] = "'Categoria obrigatória!'" > </app-mostrar-erros>
 
-  <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+  <div class="d-flex justify-content-center p-3">
+    <button type="submit" class="btn btn-primary mr-2" >Salvar</button>
     <button type="button" class="btn btn-secondary" [routerLink]= "['/produtos']" >Voltar</button>
   </div>
 

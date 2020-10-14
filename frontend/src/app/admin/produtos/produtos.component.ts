@@ -10,7 +10,7 @@ import { ProdutosService } from '../produtos.service';
 export class ProdutosComponent implements OnInit {
 
   public produtosApi : any = [];
-
+ 
 
   constructor(private produtoService : ProdutosService) { }
 
@@ -37,6 +37,8 @@ export class ProdutosComponent implements OnInit {
         }
       );
   }
+
+
   }
 
 

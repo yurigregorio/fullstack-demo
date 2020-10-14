@@ -14,14 +14,14 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">Preço</label>
-    <input type="text" class="form-control" formControlName = "preco" placeholder="Preço do produto.">
+    <input type="text" class="form-control" formControlName = "preco" placeholder="Preço do produto">
 </div>
 <app-mostrar-erros [isError]= "isErrorField('preco')" [mensagem] = "'Preço obrigatória!'" > </app-mostrar-erros>
 
   <div>
     <label for="categoriaProduto">Categoria</label>
     <select class="form-control" formControlName="categoria" id="categoria">
-      <option *ngFor="let cat of categoriasDaBox" [value]="cat.id" >{{ cat.nome }}</option>
+      <option *ngFor="let cat of categoriasBox" [value]="cat.id" >{{ cat.nome }}</option>
     </select>
   </div>
 

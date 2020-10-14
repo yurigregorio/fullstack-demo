@@ -16,7 +16,7 @@ export class ProdutosFormComponent implements OnInit {
   idProduto : number = 0;
   textoBotao : String = 'Salvar';
   meuForm : FormGroup;
-  public categoriasDaBox : any = [];
+  public categoriasBox : any = [];
 
   constructor(
     private formBuilder : FormBuilder,
@@ -54,8 +54,8 @@ export class ProdutosFormComponent implements OnInit {
   }
   preencherSelectBoxComCategorias(){
     this.produtoService.pegarCategorias().subscribe( (dados) => {
-      this.categoriasDaBox = dados;
-      console.log(this.categoriasDaBox);
+      this.categoriasBox = dados;
+      console.log(this.categoriasBox);
     }, (error) => {
       console.log(error);
     });
@@ -63,7 +63,7 @@ export class ProdutosFormComponent implements OnInit {
 
 
  onSubmit(){
-  this.meuForm.value.categoria = this.categoriasDaBox.find(c => c.id == this.meuForm.value.categoria);
+  this.meuForm.value.categoria = this.categoriasBox.find(c => c.id == this.meuForm.value.categoria);
 
   if(this.isEdicao){
     this.updateProduto(this.idProduto, this.meuForm.value );

@@ -72,17 +72,18 @@ public class ApicursoApplication implements CommandLineRunner {
 		//inserindo o produto
 		Produto prod1 = Produto.builder()
 				.categoria(cat1)
-				.nome("Geladeira")
-				.descricao("Geladeira")
-				.preco(2500)
+				.nome("Torradeira")
+				.descricao("Torradeira Oster Gourmet")
+				.preco(260)
 				.build();
 			
+		Imagem img1 = Imagem.builder().url("https://sipolatti.vteximg.com.br/arquivos/ids/170880-550-570/438278-Torradeira-Eletrica-Em-Aco-Inox-850w-Gift-T850v.jpg?v=636997693125470000").build();
+		img1.setProdutos( Arrays.asList(prod1)  );		
+		prod1.setImagens( Arrays.asList(img1) );
+		this.imagemRepository.save(img1);
 		this.produtoRepository.save(prod1);
 
-		
-//		System.out.println(this.produtoRepository.findAll());
-//		System.out.println(this.categoriaRepository.findAll());
-		
+
 		Produto prod2 = Produto.builder()
 				.categoria(cat1)
 				.nome("Fogão")
@@ -90,19 +91,25 @@ public class ApicursoApplication implements CommandLineRunner {
 				.preco(1000)
 				.build();
 		
-//		List <Produto> arr = new ArrayList<Produto>();
-//		arr.add(prod2);
-		
-		Imagem img = Imagem.builder().url("http://localhost:8080").build();
-		
-		//associando os objetos
+		Imagem img = Imagem.builder().url("https://www.havan.com.br/media/catalog/product/cache/55f334c6f9412d6b39cfe195ce4e3943/f/o/fogao-4-bocas-atlas-coliseum-glass-branco_296650_1.jpg").build();
 		img.setProdutos( Arrays.asList(prod2)  );		
 		prod2.setImagens( Arrays.asList(img) );
-
 		this.imagemRepository.save(img);
 		this.produtoRepository.save(prod2);
-				
-		//System.out.println(this.imagemRepository.findAll());
+
+		
+		Produto prod3 = Produto.builder()
+				.categoria(cat1)
+				.nome("Geladeira")
+				.descricao("Geladeira Electrolux")
+				.preco(1000)
+				.build();
+		
+		Imagem imgprod3 = Imagem.builder().url("https://a-static.mlcdn.com.br/618x463/geladeira-consul-frost-free-duplex-397-litros-evox-com-freezer-embaixo/consul/326020176/b2af7e290128e3f9ec79cbf097d7ff32.jpg").build();
+		imgprod3.setProdutos( Arrays.asList(prod3)  );		
+		prod3.setImagens( Arrays.asList(imgprod3) );
+		this.imagemRepository.save(imgprod3);
+		this.produtoRepository.save(prod3);
 		
 		Endereco end1 = Endereco
 				.builder()

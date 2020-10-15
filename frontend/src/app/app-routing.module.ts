@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuardService } from './auth/guards/admin-guard.service';
+import { HomePageComponent } from './home-page/home-page/home-page.component';
 import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 
 const routes: Routes = [
-  { path  : ''          , component    : MeuPrimeiroComponent },
-  { path  : 'home'      , component    : MeuPrimeiroComponent },
+  { path  : ''          , component    : HomePageComponent },
+  { path  : 'home'      , component    : HomePageComponent },
   { path  : 'categorias', loadChildren : () => import('./categoria/categoria.module').then( (m) => m.CategoriaModule ) },
   { path  : 'alunos'    , loadChildren : () => import('./aluno/aluno.module').then( (m) => m.AlunoModule ) },
   { path  : 'auth'      , loadChildren : () => import('./auth/auth.module').then( m => m.AuthModule)},

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,19 +37,21 @@ public class AlunoController {
 	// bônus - deletar um aluno
 	
 	@GetMapping ( value="alunos")
-	public List<Aluno> getAll() {
-		return this.alunoService.findAll();
+	public ResponseEntity <List<Aluno>> getAll() {
+		List<Aluno> list = this.alunoService.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping ( value="alunos/{id}")
-	public Aluno getOne( @PathVariable int id ) {
-		return this.alunoService.getOne(id);
+	public ResponseEntity<Aluno> getOne( @PathVariable int id ) {
+		Aluno aluno = this.alunoService.getOne(id);
+		return ResponseEntity.ok().body(aluno);
 	}
 	
 	@PostMapping ( value="alunos")
-	public Aluno create(@RequestBody Aluno aluno) {
-		
-		return this.alunoService.save(aluno);			
+	public ResponseEntity<Aluno> create(@RequestBody Aluno alun) {
+		Aluno aluno = this.alunoService.save(alun);
+		return ResponseEntity.ok().body(aluno);			
 	}
 	
 	@PatchMapping (value = "alunos/{id}")

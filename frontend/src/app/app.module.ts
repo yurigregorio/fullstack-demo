@@ -12,12 +12,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorService } from './shared/interceptors/auth-interceptor.service';
 import { HttpConfigInterceptorService } from './shared/interceptors/http-config-interceptor.service';
+import { HomePageService } from './home-page/home-page.service';
+import { HomePageModule } from './home-page/home-page.module';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeuPrimeiroComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

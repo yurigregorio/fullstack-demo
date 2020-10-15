@@ -56,6 +56,26 @@
 		    <version>2.3.5</version>
 		</dependency>
 
+	<!-- apache Camel -->
+		
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-spring-boot-starter</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-http-starter</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -115,5 +135,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+		<!-- apache Camel -->
+		
+	
 
 </project>

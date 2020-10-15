@@ -30,25 +30,27 @@ public class UsuarioController {
 	@GetMapping (value = "usuarios")
 	public ResponseEntity <List<UsuarioDto>> findAll(){
 		List<Usuario> list = this.usuarioService.findAll();
-		
 		List<UsuarioDto> listDTO = list.stream().map( (objeto) -> new UsuarioDto(objeto)  ).collect(Collectors.toList());		
 		
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
 	@GetMapping (value = "usuarios/{id}")
-	public Usuario findOne(@PathVariable int id){
-		return this.usuarioService.findOne(id);
+	public ResponseEntity<Usuario> findOne(@PathVariable int id){
+		Usuario user = this.usuarioService.findOne(id);
+		return ResponseEntity.ok().body(user);
 	}
 	
 	@PostMapping (value = "usuarios")
-	public Usuario save(@RequestBody Usuario usuario){
-		return this.usuarioService.save(usuario);
+	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
+		Usuario user = this.usuarioService.save(usuario);
+		return ResponseEntity.ok().body(user);
 	}
 	
 	@PatchMapping (value = "usuarios/{id}")
-	public Usuario update(@RequestBody Usuario usuario, @PathVariable int id){
-		return this.usuarioService.update(id, usuario);
+	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable int id){
+		Usuario user = this.usuarioService.update(id, usuario);
+		return ResponseEntity.ok().body(user);
 	}
 	
 	@DeleteMapping (value = "usuarios/{id}")

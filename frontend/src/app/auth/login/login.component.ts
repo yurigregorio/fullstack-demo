@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
           };
 
           this.storage.setLocalUser(localUser);
-
+          this.authService.sendMenssage(true);
           this.router.navigate(['/home']);
         }
       );

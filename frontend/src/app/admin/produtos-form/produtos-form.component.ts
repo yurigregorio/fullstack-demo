@@ -26,14 +26,22 @@ export class ProdutosFormComponent implements OnInit {
     private toastr: ToastrService,
 
   ) {
-    this.meuForm = this.formBuilder.group( {
-      //valor inicial e os validadores
-      //id : [ '', [  ] ],
-      nome :      [ '', [ Validators.required ] ],
-      descricao : ['', [ Validators.required ] ],
-      preco :     [ '', [ Validators.required ] ],
-      categoria : [ '', [ Validators.required ] ]
-    } );
+    this.meuForm = this.formBuilder.group({
+      id: ['', []],
+      nome: ['', [Validators.required]],
+      descricao: ['', [Validators.required]],
+      preco: ['', [Validators.required]],
+      categoria: this.formBuilder.group (
+        {
+          id : ['', [ ] ] ,
+          nome : [ '', [ ] ]
+        } ),
+      imagens: this.formBuilder.group (
+        {
+          id : ['', [ ]] ,
+          url : [ '', [ ] ]
+        } )
+    });
   }
 
   ngOnInit(): void {

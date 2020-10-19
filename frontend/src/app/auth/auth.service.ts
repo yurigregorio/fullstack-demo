@@ -10,6 +10,7 @@ import { AuthToken } from './model/auth-token';
 export class AuthService {
 
   url : string = `${environment.urlApi}/autenticacao`;
+  /**ele é o intermediário */
   public authSubject = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
@@ -18,7 +19,7 @@ export class AuthService {
     return this.http.post<AuthToken>( this.url, credential );
   }
 
-  public sendMenssage(msg : boolean){
+  public sendMessage(msg : boolean){
     this.authSubject.next(msg);
   }
 }

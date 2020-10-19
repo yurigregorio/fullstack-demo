@@ -20,10 +20,10 @@ public class ImagemService {
 	@Autowired
 	private ImagemRepository imagemRepository;
 
- 	public List<Imagem> findAll(){
- 		 		
- 		return this.imagemRepository.findAll();
- 	}
+		
+	public List<Imagem> findAll(){
+		return this.imagemRepository.findAll();
+	}
  	
  	public Imagem getOne( int id ){
 	 		

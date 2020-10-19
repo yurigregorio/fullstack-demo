@@ -54,14 +54,17 @@ export class LoginComponent implements OnInit {
             token : success.token,
             nome: decodedToken.nome,
             email : decodedToken.sub,
-            id : decodedToken.id,
-            scopes : decodedToken.scopes,
+            id : decodedToken.id
+            //scopes : decodedToken.scopes
           };
 
           this.storage.setLocalUser(localUser);
-          this.authService.sendMenssage(true);
+          this.authService.sendMessage(true);
+
           this.router.navigate(['/home']);
-        }
+        },
+        (error) => {this.authService.sendMessage(false);}
+
       );
   }
 

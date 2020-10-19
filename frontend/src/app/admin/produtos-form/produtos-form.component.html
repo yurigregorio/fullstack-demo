@@ -1,35 +1,67 @@
-<form [formGroup]= "meuForm" (submit)= "onSubmit()" >
-  <br>
-    <div class="form-group ">
-      <label for="exampleInputEmail1">Produto</label>
-      <input type="text" class="form-control" formControlName="nome" placeholder="Nome do produto">
-    </div>
-    <app-mostrar-erros [isError]= "isErrorField('nome')" [mensagem] = "'Nome obrigatório!'" > </app-mostrar-erros>
+<form [formGroup]="meuForm" (submit)="onSubmit()">
 
-    <div class="form-group">
-      <label for="exampleInputPassword1">Descrição</label>
-      <textarea type="text" class="form-control" formControlName = "descricao" placeholder="Descrição da categoria"></textarea>
+  <div class="form-group " *ngIf="isEdicao">
+    <label for="exampleInputId1">ID</label>
+    <input type="text" class="form-control" [readOnly]="true" formControlName="id" placeholder="ID do Produto">
   </div>
-  <app-mostrar-erros [isError]= "isErrorField('descricao')" [mensagem] = "'Descrição obrigatória!'" > </app-mostrar-erros>
 
   <div class="form-group">
-    <label for="exampleInputPassword1">Preço</label>
-    <input type="text" class="form-control" formControlName = "preco" placeholder="Preço do produto">
-</div>
-<app-mostrar-erros [isError]= "isErrorField('preco')" [mensagem] = "'Preço obrigatória!'" > </app-mostrar-erros>
+    <label for="exampleInputNome1">Nome</label>
+    <input type="text" class="form-control" formControlName="nome" placeholder="Nome do Produto">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'nome' )" [mensagem]="'Nome obrigatório'"
+    (notificador)="receberNotificacao($event)">
+  </app-mostrar-erros>
 
-  <div>
-    <label for="categoriaProduto">Categoria</label>
-    <select class="form-control" formControlName="categoria" id="categoria">
-      <option *ngFor="let cat of categoriasBox" [value]="cat.id" >{{ cat.nome }}</option>
-    </select>
+  <div class="form-group">
+    <label for="exampleInputCategoria1">Descrição</label>
+    <input type="text" class="form-control" formControlName="descricao" placeholder="Descrição do Produto">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'descricao' )" [mensagem]="'Descrição obrigatória!'"
+    (notificador)="receberNotificacao($event)"></app-mostrar-erros>
+
+  <div class="form-group">
+    <label for="exampleInputCategoria1">Preço</label>
+    <input type="text" class="form-control" formControlName="preco" placeholder="Preço do Produto">
+  </div>
+  <app-mostrar-erros [isError]="isErrorField( 'preco' )" [mensagem]="'Preço obrigatório!'"
+    (notificador)="receberNotificacao($event)"></app-mostrar-erros>
+
+  <div class="form-row align-items-center" >
+
+    <div formGroupName="categoria" class="col-auto my-1">
+      <label class="mr-sm-2">Categorias</label>
+      <select formControlName="id" class="custom-select mr-sm-2">
+        <option *ngFor="let categoria of categoriasDaBox" [value]="categoria.id">{{categoria.nome}}
+        </option>
+      </select>
+    </div>
+
   </div>
 
-  <app-mostrar-erros [isError]= "isErrorField('categoria')" [mensagem] = "'Categoria obrigatória!'" > </app-mostrar-erros>
+  <div class="form-group">
+    <!-- <div formGroupName="imagens"> -->
+      <!-- <label for="exampleInputCategoria1">Link da imagem</label>
+      <input type="text" class="form-control" formControlName="url" placeholder="Link da imagem"> -->
 
-  <div class="d-flex justify-content-center p-3">
-    <button type="submit" class="btn btn-primary mr-2" >Salvar</button>
-    <button type="button" class="btn btn-secondary" [routerLink]= "['/produtos']" >Voltar</button>
+      <ng-multiselect-dropdown
+        [placeholder]="'Imagens'"
+        [data]="imagens"
+        formControlName="imagens"
+        [settings]="dropdownSettings"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+
+    </div>
+  <!-- </div> -->
+  <app-mostrar-erros [isError]="isErrorField( 'imagens' )" [mensagem]="'Link da imagem obrigatória!'"
+    (notificador)="receberNotificacao($event)"></app-mostrar-erros>
+
+
+  <div class="d-flex justify-content-center">
+    <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary mr-2">Salvar</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/produtos']">Voltar</button>
   </div>
-
-  </form>
+</form>

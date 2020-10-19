@@ -1,4 +1,3 @@
-
 import { HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -42,7 +41,7 @@ export class HttpConfigInterceptorService  implements HttpInterceptor {
               return event;
           }),
           catchError((error: HttpErrorResponse) => {
-              //console.log('event--->>> ERROR');
+              console.log('event--->>> ERROR');
 
               let data: any;
               data = {

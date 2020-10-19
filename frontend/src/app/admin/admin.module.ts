@@ -4,15 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { SharedModule } from '../shared/shared.module';
-import { ProdutosFormComponent } from './produtos-form/produtos-form.component';
+import { ProdutoFormComponent } from './produtos-form/produtos-form.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
-  declarations: [ProdutosComponent, ProdutosFormComponent],
+  declarations: [ProdutosComponent, ProdutoFormComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class AdminModule { }

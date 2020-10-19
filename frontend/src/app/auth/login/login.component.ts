@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
             token : success.token,
             nome: decodedToken.nome,
             email : decodedToken.sub,
-            id : decodedToken.id
-            //scopes : decodedToken.scopes
+            id : decodedToken.id,
+            scopes : decodedToken.scopes
           };
 
           this.storage.setLocalUser(localUser);

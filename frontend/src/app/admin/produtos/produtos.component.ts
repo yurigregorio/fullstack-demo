@@ -10,16 +10,34 @@ import { ProdutosService } from '../produtos.service';
 export class ProdutosComponent implements OnInit {
 
   public produtosApi : any = [];
- 
+  //pagina é o indice da API
+  public pagina: number = 0;
+  //paginador é o índice do paginador
+  public paginador: number = this.pagina+1;
+  public linhas: number = 2;
+  public nome: string = "";
+  public totalElementos: number = 0;
+  public totalPaginas: number = 0;
 
-  constructor(private produtoService : ProdutosService) { }
 
+  constructor(private produtosService : ProdutosService) { }
   ngOnInit(): void {
-    this.getAllProdutos();
+    this.pagination();
+  }
+  private pagination(): void {
+    this.produtosService.pagination(this.pagina, this.linhas).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.produtosApi = response;
+        this.totalElementos = response.totalElements;
+        this.totalPaginas = response.totalPages;
+      }
+    );
   }
 
+
   public getAllProdutos(){
-    this.produtoService.getAllProdutosApi()
+    this.produtosService.getAllProdutosApi()
     .subscribe(
       ( resultado ) => {
         console.log ( resultado );
@@ -29,7 +47,7 @@ export class ProdutosComponent implements OnInit {
     }
 
   deletarProduto(id){
-    this.produtoService.deletarProduto(id)
+    this.produtosService.deletarProduto(id)
       .subscribe(
         (dados) =>{
             alert("Produto deletado com sucesso");
@@ -38,6 +56,35 @@ export class ProdutosComponent implements OnInit {
       );
   }
 
+
+  public onChangeSelected(): void {
+    this.pagination();
+  }
+
+  nextPage(): void {
+    this.pagina++;
+    this.pagination();
+  }
+
+  previousPage(): void {
+    this.pagina--;
+    if (this.pagina < 0) {
+      this.pagina = 0;
+    }
+    this.pagination();
+  }
+
+  public setPage(page: number): void {
+    this.pagina = page;
+    this.pagination();
+  }
+
+  pageChange(event){
+    console.log(event)
+    this.pagina = event -1 ;
+    this.paginador = event;
+    this.pagination();
+  }
 
   }
 

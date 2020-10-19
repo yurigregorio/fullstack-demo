@@ -6,6 +6,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProdutoFormComponent } from './produtos-form/produtos-form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ItemVenda } from '../model/itemVenda';
 import { Usuario } from '../model/usuario';
 
 @Injectable({
@@ -27,6 +28,28 @@ export class StorageService {
     }
     else{
       localStorage.setItem('localUser', JSON.stringify (obj));
+    }
+  }
+  public getCarrinho(): ItemVenda[] {
+    //let str = localStorage.getItem(environment.storageKeysConfig.carrinho);
+    let str = localStorage.getItem('carrinho');
+
+    if (str != null) {
+      return JSON.parse(str);
+    }
+    else {
+      return null;
+    }
+  }
+
+  public setCarrinho(obj: ItemVenda[]) {
+    if (obj != null) {
+      //localStorage.setItem(environment.storageKeysConfig.carrinho, JSON.stringify(obj)  );
+      localStorage.setItem('carrinho', JSON.stringify(obj));
+    }
+    else {
+      //localStorage.removeItem(environment.storageKeysConfig.carrinho);
+      localStorage.removeItem('carrinho');
     }
   }
 }

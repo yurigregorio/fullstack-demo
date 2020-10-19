@@ -40,4 +40,9 @@ export class ProdutosService {
     return this.httpClient.get( `${environment.urlApi}/imagens` );
   }
 
+  public pagination(pagina: number, linhas: number){
+    return this.httpClient.get(`http://localhost:8081/produtos/paginador?pagina=${pagina}&linhas=${linhas}`);
+  }
+
+
 }

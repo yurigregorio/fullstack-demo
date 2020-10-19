@@ -12,6 +12,7 @@ const routes: Routes = [
   { path  : 'auth'      , loadChildren : () => import('./auth/auth.module').then( m => m.AuthModule)},
   { path  : 'endereco'  , loadChildren : () => import('./endereco/endereco.module').then( m => m.EnderecoModule)},
   { path  : 'produtos'  , loadChildren : () => import('./admin/admin.module').then( m => m.AdminModule), canActivate : [AdminGuardService]} ,
+  { path  : 'carrinho'  , loadChildren : () => import('./carrinho/carrinho.module').then( m => m.CarrinhoModule)},
 ];
 
 @NgModule({

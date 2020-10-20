@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ItemVenda } from '../shared/model/itemVenda';
 import { Produto } from '../shared/model/produto';
 import { Usuario } from '../shared/model/usuario';
@@ -15,8 +17,8 @@ import { StorageService } from '../shared/services/storage.service';
 export class CarrinhoService {
 
   constructor(
-    private localStorage: StorageService
-    ) { }
+    private localStorage: StorageService,
+    private httpClient:HttpClient) { }
 
 
   itensCarrinho: ItemVenda[] = [];
@@ -120,7 +122,7 @@ export class CarrinhoService {
     this.user.email = this.localStorage.getLocalUser().email
     // this.venda.usuario = this.user;
     this.venda.pagamento = "Aguardando";
-    this.venda.status = "Aberta";
+    this.venda.statusVenda = "Aberta";
     this.venda.totalItens = this.totalItensCarrinho();
     this.venda.valor = this.valorTotalFrete()
     this.venda.parcela = 10;
@@ -134,6 +136,10 @@ export class CarrinhoService {
     this.venda.item = this.itensCarrinho
     console.log("Venda: " + this.itensCarrinho)
     console.log("User: " + this.user.id)
+  }
+
+  public saveVenda(obj : Vendas){
+    return this.httpClient.post<Vendas>(`${environment.urlApi}/vendas`,obj);
   }
 
 }

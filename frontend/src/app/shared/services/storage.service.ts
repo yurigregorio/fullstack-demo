@@ -52,4 +52,16 @@ export class StorageService {
       localStorage.removeItem('carrinho');
     }
   }
+
+  getValorTotal(){
+    let itemVenda : ItemVenda[] = this.getCarrinho();
+    let total : number = 0;
+
+    itemVenda.forEach( element => {
+      total += element.produto.preco * element.quantidade ;
+    });
+
+    return total;
+  }
+
 }

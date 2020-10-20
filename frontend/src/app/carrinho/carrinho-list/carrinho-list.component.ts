@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { Vendas } from 'src/app/shared/model/vendas';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { CarrinhoService } from '../carrinho.service';
 
 @Component({
   selector: 'app-carrinho-list',
@@ -11,7 +14,7 @@ export class CarrinhoListComponent implements OnInit {
   public carrinhoApi : any = [];
   public totalCarrinho : number = 0;
 
-  constructor(private storageService : StorageService) { }
+  constructor(private storageService : StorageService, private carrinhoService : CarrinhoService) { }
 
   ngOnInit(): void {
     this.carrinhoApi = this.storageService.getCarrinho();
@@ -41,5 +44,25 @@ export class CarrinhoListComponent implements OnInit {
   atualizaCarrinho(){
     this.storageService.setCarrinho(this.carrinhoApi);
   }
+
+  finalizarVenda(){
+      let venda : Vendas = {
+      id          :null,
+      usuario     : this.storageService.getLocalUser(),
+      statusVenda : 'Aberta',
+      pagamento   : '2',
+      totalItens  : this.storageService.getCarrinho().length,
+      valor       : this.storageService.getValorTotal(),
+      parcela     : 1,
+      valorParcela: this.storageService.getValorTotal(),
+      item        : this.storageService.getCarrinho(),
+      dataVenda : moment(new Date() ).format("DD-MM-yyyy HH:mm:ss")
+    };
+    //import   moment from 'moment';
+    this.carrinhoService.saveVenda(venda)
+    .subscribe( data => {});
+  }
+
+
 
 }

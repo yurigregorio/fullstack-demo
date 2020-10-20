@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -48,4 +49,8 @@ public class Produto {
 		inverseJoinColumns = @JoinColumn(name="imagem_id")
 	)		
 	private List<Imagem> imagens;
+	
+	@OneToMany(mappedBy = "produto")
+	@JsonIgnore
+	List<ItemVenda> item;
 }

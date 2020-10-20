@@ -33,7 +33,7 @@ export class CarrinhoListComponent implements OnInit {
   atualizarTotal(){
     this.totalCarrinho = 0;
     for (let i = 0; i < this.carrinhoApi.length; i++) {
-      this.totalCarrinho = (this.carrinhoApi[i].produto.preco * this.carrinhoApi[i].quantidade) + this.totalCarrinho;
+      this.totalCarrinho += (this.carrinhoApi[i].produto.preco * this.carrinhoApi[i].quantidade);
       console.log(this.totalCarrinho);
     }
   }

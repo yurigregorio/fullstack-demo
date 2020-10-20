@@ -3,19 +3,20 @@
 <br/>
 <h2> Carrinho </h2>
 <table class="table" >
+  <thead class = "thead-dark">
   <tr>
-
       <th>Nome</th>
       <th>Descrição</th>
       <th>Quantidade</th>
       <th>Preço</th>
   </tr>
+</thead>
 
   <tr *ngFor = "let prodCarrinho of carrinhoApi">
       <td>{{prodCarrinho?.produto.nome}}</td>
       <td>{{prodCarrinho?.produto.descricao}}</td>
-      <td><input id="spiner" type="number" value={{prodCarrinho?.quantidade}} min="0" max="1000" step="1" [(ngModel)] = "prodCarrinho.quantidade"></td>
-      <td>R$ {{prodCarrinho?.quantidade * prodCarrinho.produto?.preco}}</td>
+      <td><input id="spiner" type="number" value={{prodCarrinho?.quantidade}} min="0" max="1000" step="1" [(ngModel)] = "prodCarrinho.quantidade" (click)="atualizarTotal()"></td>
+      <td>R$ {{(prodCarrinho?.quantidade * prodCarrinho.produto?.preco)}}</td>
         <button class="btn btn-danger text-justify " (click) = "deletar(prodCarrinho)" > Remover </button>
 
 
@@ -24,7 +25,7 @@
   <td></td>
   <td></td>
   <td><b>Total</b></td>
-  <td><span class="price" style="color:green"><b>R$ </b></span></td>
+  <td class="price" style="color:green"><b>R$ {{totalCarrinho}}</b></td>
   </tr>
 
   <tr>
@@ -32,8 +33,8 @@
     <td></td>
     <td></td>
 
-    <td><button class="btn btn-dark mr-2" >Continuar </button>
-      <button class="btn btn-danger" >Volta</button>
+    <td><button class="btn btn-danger mr-2" [routerLink]="['/home']" (click)= "atualizaCarrinho()">Voltar</button>
+      <button class="btn btn-success mr-2" >Finalizar </button>
     </td>
 
   </tr>
